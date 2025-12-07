@@ -3395,3 +3395,212 @@ body {
 .faq-item:hover h4 {
   color: var(--color-primary);
 }
+
+/* ==========================================================================
+   MOBILE RESPONSIVE (MEDIA QUERIES)
+   A ajouter à la fin du fichier style.css
+   ========================================================================== */
+
+@media (max-width: 992px) {
+  /* 1. NAVIGATION MOBILE SIMPLIFIÉE
+     Rend le menu défilable horizontalement (façon Instagram/App)
+     au lieu de l'écraser. */
+  .navbar .container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1rem;
+  }
+
+  .navbar .logo {
+    margin-bottom: 1rem;
+    width: 100%;
+    text-align: center;
+  }
+
+  .navbar nav {
+    width: 100%;
+    overflow-x: auto; /* Permet le scroll horizontal */
+    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
+    padding-bottom: 10px; /* Espace pour la barre de scroll */
+  }
+
+  .navbar .nav-links {
+    width: max-content; /* Force les liens à garder leur largeur */
+    gap: 1.5rem;
+    padding-right: 20px;
+  }
+
+  /* 2. TYPOGRAPHIE ET ESPACEMENTS */
+  h1, .hero-title, .hero-enhanced h1 {
+    font-size: 2.2rem !important; /* Réduit les gros titres */
+  }
+
+  h2, .section-header h2 {
+    font-size: 1.8rem !important;
+  }
+
+  .container {
+    padding: 0 1.5rem; /* Marges latérales plus fines */
+  }
+
+  section {
+    padding: 3rem 0; /* Sections moins hautes */
+  }
+
+  /* 3. STRUCTURE GLOBALE (Empilement) */
+  .split-content, 
+  .hero-content, 
+  .grid-split, 
+  .mobile-layout, 
+  .contact-methods-grid,
+  .Coding-content,
+  .split-content-figma {
+    flex-direction: column;
+    gap: 2rem;
+  }
+
+  /* Inversion pour mettre l'image en premier sur certaines sections si besoin
+     ou laisser le texte en premier (par défaut) */
+  .hero-image, .image-side, .visual-side-figma {
+    width: 100%;
+    order: -1; /* Met l'image au dessus du texte sur mobile (optionnel) */
+    margin-bottom: 1rem;
+  }
+  
+  /* Retirer l'ordre inverse pour le Hero principal pour garder le titre en premier */
+  .hero-content .hero-image {
+    order: 0; 
+  }
+
+  /* 4. GRILLES (Passage en 1 colonne) */
+  .services-xl-grid, 
+  .services-glow-grid, 
+  .features-grid,
+  .typo-showcase-grid,
+  .palette-grid-visual,
+  .modules-gallery,
+  .human-grid {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* =========================================
+     CORRECTIONS SPÉCIFIQUES PAR PAGE
+     ========================================= */
+
+  /* --- PAGE TARIFS --- */
+  .pricing-wrapper, .pricing-grid {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .pricing-card {
+    width: 100%;
+    max-width: 100%; /* Prend toute la largeur disponible */
+    margin-bottom: 1.5rem;
+  }
+  
+  /* Le Smart Cart (Barre fixe en bas) */
+  .smart-cart {
+    width: 100%;
+    max-width: 100%;
+    border-radius: 0;
+    bottom: 0 !important; /* Collé en bas */
+    padding: 1rem;
+    flex-direction: row; /* Garde bouton et prix alignés */
+    justify-content: space-between;
+    gap: 10px;
+    border-left: none; 
+    border-right: none;
+    border-bottom: none;
+  }
+  
+  /* On cache le détail textuel pour gagner de la place */
+  .cart-breakdown {
+    display: none;
+  }
+  
+  .cart-total-label {
+    font-size: 0.6rem;
+  }
+  
+  .cart-price {
+    font-size: 1.5rem;
+  }
+  
+  .cart-btn {
+    padding: 0.8rem 1rem;
+    font-size: 0.9rem;
+  }
+
+  /* --- PAGE SERVICES --- */
+  .dashboard-mockup {
+    transform: none !important; /* Désactive la 3D qui casse sur mobile */
+    margin-top: 2rem;
+  }
+
+  .matrix-wrapper {
+    /* Permet au tableau de scroller horizontalement */
+    display: block;
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  /* --- PAGE RDV --- */
+  .booking-interface {
+    flex-direction: column;
+  }
+  
+  .booking-calendar {
+    border-right: none;
+    border-bottom: 1px solid var(--color-light-border);
+    padding: 1rem;
+  }
+  
+  .booking-slots {
+    padding: 1rem;
+  }
+  
+  .calendar-3d-mockup {
+    display: none; /* Cache le gros calendrier 3D décoratif */
+  }
+
+  /* --- PAGE ATELIER IA --- */
+  .ai-workspace-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  
+  .ai-tab-container {
+    padding-bottom: 5px; /* Scrollbar space */
+  }
+  
+  .ai-options-grid {
+    grid-template-columns: 1fr 1fr; /* 2 colonnes au lieu de 1 sur mobile */
+  }
+
+  /* --- PAGE DESIGN/PERSONNALISATION --- */
+  .visual-stack {
+    margin-top: 2rem;
+  }
+  
+  .main-stack-img {
+    transform: none !important;
+    max-width: 80%;
+  }
+
+  /* --- HERO MOBILE FOCUS (iPhone Section) --- */
+  .mobile-layout {
+    gap: 3rem;
+  }
+  
+  .iphone-mockup {
+    transform: scale(0.9); /* Réduit un peu l'iPhone */
+  }
+}
+
+/* TRES PETITS ECRANS (iPhone SE, etc.) */
+@media (max-width: 380px) {
+  .hero-title { font-size: 1.8rem !important; }
+  .cart-btn { font-size: 0.8rem; padding: 0.6rem; }
+}
