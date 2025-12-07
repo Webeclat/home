@@ -12,21 +12,31 @@
 <body>
 
   <!-- Navigation avec effet "Micro Lines" -->
-  <header class="navbar">
-    <div class="container">
-      <div class="logo">Webeclat</div>
-      <nav>
-        <ul class="nav-links">
-          <li><a href="personnalisation.html" class="micro-line">Personnalisation</a></li>
-          <li><a href="rdv.html" class="micro-line">Disponibilité</a></li>
-          <li><a href="services.html" class="micro-line">Services</a></li>
-          <li><a href="atelier-ia.html" class="micro-line ai-link">Atelier IA ✨</a></li>
-          <li><a href="tarif.html" class="micro-line">Tarifs</a></li>
-          <li><a href="rdv.html" class="btn-nav">Contact</a></li>
-        </ul>
-      </nav>
-    </div>
-  </header>
+  <!-- Remplacer la section navbar existante par celle-ci -->
+<header class="navbar">
+  <div class="container">
+    <div class="logo">Webeclat</div>
+    
+    <!-- Menu hamburger pour mobile -->
+    <input type="checkbox" id="nav-toggle" class="nav-toggle-checkbox">
+    <label for="nav-toggle" class="nav-toggle-label">
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+      <span class="hamburger-line"></span>
+    </label>
+    
+    <nav class="nav-menu">
+      <ul class="nav-links">
+        <li><a href="personnalisation.html" class="micro-line">Personnalisation</a></li>
+        <li><a href="rdv.html" class="micro-line">Disponibilité</a></li>
+        <li><a href="services.html" class="micro-line">Services</a></li>
+        <li><a href="atelier-ia.html" class="micro-line ai-link">Atelier IA ✨</a></li>
+        <li><a href="tarif.html" class="micro-line">Tarifs</a></li>
+        <li><a href="rdv.html" class="btn-nav">Contact</a></li>
+      </ul>
+    </nav>
+  </div>
+</header>
 
   <!-- Hero Section -->
   <section class="hero">
@@ -512,5 +522,107 @@
       });
     }
   });
+  
+</script>
+<script>
+// Optimisations mobile supplémentaires
+document.addEventListener('DOMContentLoaded', function() {
+  
+  // Détection mobile
+  const isMobile = /iPhone|iPad|iPod|Android/i.test(navigator.userAgent);
+  
+  if (isMobile) {
+    // Désactiver les animations complexes sur mobile
+    document.body.classList.add('is-mobile');
+    
+    // Optimiser les images pour mobile
+    const images = document.querySelectorAll('img');
+    images.forEach(img => {
+      if (img.width > window.innerWidth) {
+        img.style.maxWidth = '100%';
+        img.style.height = 'auto';
+      }
+    });
+    
+    // Empêcher le zoom sur les inputs iOS
+    const inputs = document.querySelectorAll('input, textarea, select');
+    inputs.forEach(input => {
+      input.addEventListener('focus', function() {
+        window.scrollTo(0, this.offsetTop - 100);
+      });
+    });
+    
+    // Fermer le menu au clic sur un lien
+    const menuLinks = document.querySelectorAll('.nav-menu a');
+    const navToggle = document.getElementById('nav-toggle');
+    
+    menuLinks.forEach(link => {
+      link.addEventListener('click', function() {
+        navToggle.checked = false;
+      });
+    });
+    
+    // Smooth scroll pour ancres
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+      anchor.addEventListener('click', function(e) {
+        if (this.getAttribute('href') !== '#') {
+          e.preventDefault();
+          const targetId = this.getAttribute('href');
+          if (targetId !== '#') {
+            const targetElement = document.querySelector(targetId);
+            if (targetElement) {
+              window.scrollTo({
+                top: targetElement.offsetTop - 80,
+                behavior: 'smooth'
+              });
+            }
+          }
+        }
+      });
+    });
+  }
+  
+  // Gestion du menu mobile
+  const navToggle = document.getElementById('nav-toggle');
+  const body = document.body;
+  
+  if (navToggle) {
+    navToggle.addEventListener('change', function() {
+      if (this.checked) {
+        body.style.overflow = 'hidden'; // Empêche le scroll quand le menu est ouvert
+      } else {
+        body.style.overflow = '';
+      }
+    });
+  }
+  
+  // Click outside pour fermer le menu
+  document.addEventListener('click', function(e) {
+    const navMenu = document.querySelector('.nav-menu');
+    const navLabel = document.querySelector('.nav-toggle-label');
+    
+    if (navToggle && navToggle.checked && 
+        !navMenu.contains(e.target) && 
+        !navLabel.contains(e.target)) {
+      navToggle.checked = false;
+      body.style.overflow = '';
+    }
+  });
+  
+  // Ajustement de la hauteur viewport mobile
+  function setVH() {
+    const vh = window.innerHeight * 0.01;
+    document.documentElement.style.setProperty('--vh', `${vh}px`);
+  }
+  
+  setVH();
+  window.addEventListener('resize', setVH);
+});
+
+// Correction du 100vh sur mobile iOS
+document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+window.addEventListener('resize', function() {
+  document.documentElement.style.setProperty('--vh', window.innerHeight * 0.01 + 'px');
+});
 </script>
 </body>
