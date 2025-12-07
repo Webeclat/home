@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Design & Personnalisation - Webeclat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;700&family=Inter:wght@300;400;600;800&family=Italiana&family=Merriweather:ital,wght@0,300;0,700;1,300&family=Montserrat:wght@400;700&family=Nunito:wght@400;700&family=Oswald:wght@500;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Quicksand:wght@400;600;700&family=Space+Grotesk:wght@400;700&display=swap" rel="stylesheet" />
+    <style>
+    /* Transitions fluides pour TOUS les éléments importants */
+    body, .card, .btn, .navbar, .hero, section, footer, .module-card-visual, h1, h2, p, a {
+      transition: all 0.5s cubic-bezier(0.25, 0.8, 0.25, 1);
+    }
+    .navbar .logo img { height: 40px; width: auto; vertical-align: middle; }
+    
+    /* Footer de base */
+    .footer { padding: 4rem 1rem; border-top: 1px solid rgba(255,255,255,0.1); }
+  </style>
+</head>
+<body class="design-page theme-corporate"> <header class="navbar">
+  <div id="theme-transition-curtain"></div>
+    <div class="container">
+      <div class="logo">
+        <a href="index.html">
+          <img src="Logo Webeclat Blanc recadré.png" alt="Logo Webeclat"> 
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="micro-line">Accueil</a></li>
+          <li><a href="#couleurs" class="micro-line">Thèmes</a></li>
+          <li><a href="services.html" class="micro-line">Services</a></li>
+          <li><a href="atelier-ia.html" class="micro-line ai-link">Atelier IA ✨</a></li>
+          <li><a href="tarif.html" class="micro-line">Tarifs</a></li>
+          <li><a href="rdv.html" class="btn-nav">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero branding-hero-visual">
+    <div class="hero-overlay"></div>
+    <div class="container hero-content relative-z">
+      <div class="hero-text text-center-mobile">
+        <span class="badge-pill" id="dynamic-badge">Design Sur Mesure</span>
+        <h1 id="dynamic-title">Votre marque mérite <br><span class="highlight">l'excellence visuelle</span>.</h1>
+        <p id="dynamic-desc">Plongez dans notre atelier de création. Du pixel à la palette, découvrez comment nous forgeons une identité numérique unique.</p>
+        <div class="hero-buttons">
+          <a href="#couleurs" class="btn">Explorer les styles 👇</a>
+        </div>
+      </div>
+      <div class="hero-image visual-stack">
+        <img id="hero-dynamic-img" src="Logo Webeclat Blanc recadré.png" alt="Design UI UX" class="main-stack-img" />
+      </div>
+    </div>
+  </section>
+
+  <section id="couleurs" class="section-padding fade-in-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>Choisissez votre Univers</h2>
+        <p>Cliquez sur une ambiance pour métamorphoser instantanément la structure, les polices et les couleurs de cette page.</p>
+      </div>
+
+      <div class="palette-grid-visual">
+        <div class="palette-card-visual active" onclick="setTheme('theme-corporate')">
+          <div class="mini-browser-mockup">
+            <div class="browser-header" style="background-color: #009dff;"><span class="dots"></span></div>
+            <div class="browser-content">
+               <img src="pro-site.png" class="theme-example-img" alt="Ambiance Corporate">
+               
+               <div class="dummy-hero">Pro.</div>
+               <div class="dummy-btn" style="background-color: #009dff;">Action</div>
+            </div>
+          </div>
+          <h3>Corporate Blue</h3>
+          <p>Fiable, net, moderne.</p>
+        </div>
+
+        <div class="palette-card-visual" onclick="setTheme('theme-eco')">
+          <div class="mini-browser-mockup">
+            <div class="browser-header" style="background-color: #27ae60;"><span class="dots"></span></div>
+            <div class="browser-content">
+               <img src="https://images.unsplash.com/photo-1500382017468-9049fed747ef?w=400&q=80" class="theme-example-img" alt="Ambiance Nature">
+
+               <div class="dummy-hero" style="font-family: 'Nunito'">Bio.</div>
+               <div class="dummy-btn" style="background-color: #27ae60; border-radius: 20px;">Voir</div>
+            </div>
+          </div>
+          <h3>Eco Organic</h3>
+          <p>Naturel, arrondi, apaisant.</p>
+        </div>
+
+        <div class="palette-card-visual" onclick="setTheme('theme-luxe')">
+          <div class="mini-browser-mockup">
+            <div class="browser-header" style="background-color: #cfb185;"><span class="dots"></span></div>
+            <div class="browser-content">
+               <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?w=400&q=80" class="theme-example-img" alt="Ambiance Luxe">
+
+               <div class="dummy-hero" style="font-family: 'Cinzel'; color: #000;">Luxe.</div>
+               <div class="dummy-btn" style="background-color: #cfb185; border-radius: 0;">Réserver</div>
+            </div>
+          </div>
+          <h3>Gold Prestige</h3>
+          <p>Élégant, sombre, premium.</p>
+        </div>
+        
+        <div class="palette-card-visual" onclick="setTheme('theme-pop')">
+          <div class="mini-browser-mockup">
+            <div class="browser-header" style="background-color: #ff4757; border-bottom: 2px solid black;"><span class="dots"></span></div>
+            <div class="browser-content">
+               <img src="https://images.unsplash.com/photo-1546410531-bb4caa6b424d?w=400&q=80" class="theme-example-img" alt="Ambiance Pop">
+
+               <div class="dummy-hero" style="font-family: 'Space Grotesk'; text-transform: uppercase;">Bold.</div>
+               <div class="dummy-btn" style="background-color: #ff4757; border: 2px solid black; box-shadow: 2px 2px 0 black;">Go!</div>
+            </div>
+          </div>
+          <h3>Neo Pop</h3>
+          <p>Audacieux, géométrique, vibrant.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="typographie" class="section-padding fade-in-section">
+    <div class="container">
+      <div class="section-header">
+        <h2>L'Impact Typographique</h2>
+        <p>Chaque style impose sa propre voix. Voyez comment la police change la perception du message.</p>
+      </div>
+
+      <div class="typo-showcase-grid">
+        
+        <div class="typo-card">
+          <div class="typo-visual" style="background-color: #f0f4f8;">
+            <span class="big-letter" style="font-family: 'Inter', sans-serif; color: #002b45;">Aa</span>
+            <div class="font-names">Inter & Sans-Serif</div>
+            <img src="https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="typo-example-img" alt="Bureau Tech">
+          </div>
+          <div class="typo-info">
+            <h3>Style Corporate</h3>
+            <div class="dummy-text-block" style="font-family: 'Inter', sans-serif;">
+              <strong>Clarté absolue.</strong><br>
+              Une lisibilité optimale pour inspirer confiance et professionnalisme.
+            </div>
+          </div>
+        </div>
+
+        <div class="typo-card">
+          <div class="typo-visual" style="background-color: #f7f9f7;">
+            <span class="big-letter" style="font-family: 'Quicksand', sans-serif; color: #2d4030;">Qg</span>
+            <div class="font-names">Quicksand & Nunito</div>
+            <img src="https://images.unsplash.com/photo-1441974231531-c6227db76b6e?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="typo-example-img" alt="Forêt">
+          </div>
+          <div class="typo-info">
+            <h3>Style Eco</h3>
+            <div class="dummy-text-block" style="font-family: 'Quicksand', sans-serif;">
+              <strong>Douceur naturelle.</strong><br>
+              Des formes arrondies qui évoquent la nature et l'accessibilité.
+            </div>
+          </div>
+        </div>
+
+        <div class="typo-card">
+          <div class="typo-visual" style="background-color: #111;">
+            <span class="big-letter" style="font-family: 'Italiana', serif; color: #bf953f;">Lx</span>
+            <div class="font-names" style="color:#000;">Italiana & Playfair</div>
+            <img src="https://images.unsplash.com/photo-1566737236500-c8ac43014a67?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="typo-example-img" alt="Texture Or">
+          </div>
+          <div class="typo-info">
+            <h3>Style Luxe</h3>
+            <div class="dummy-text-block" style="font-family: 'Italiana', serif;">
+              <strong>Élégance intemporelle.</strong><br>
+              Des empattements fins pour une distinction haut de gamme.
+            </div>
+          </div>
+        </div>
+
+        <div class="typo-card">
+          <div class="typo-visual" style="background-color: #fff0f0;">
+            <span class="big-letter" style="font-family: 'Oswald', sans-serif; color: #ff0055;">BO</span>
+            <div class="font-names">Oswald & Space Grotesk</div>
+            <img src="https://images.unsplash.com/photo-1492684223066-81342ee5ff30?ixlib=rb-1.2.1&auto=format&fit=crop&w=600&q=80" class="typo-example-img" alt="Art Abstrait">
+          </div>
+          <div class="typo-info">
+            <h3>Style Bold</h3>
+            <div class="dummy-text-block" style="font-family: 'Oswald', sans-serif; text-transform: uppercase; letter-spacing: 1px;">
+              <strong>IMPACT MAXIMUM.</strong><br>
+              Une typographie faite pour crier votre message.
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section id="modules" class="section-padding fade-in-section" style="padding-bottom: 4rem;">
+    <div class="container">
+      <div class="section-header">
+        <h2>Modules Intelligents</h2>
+        <p>Les fonctionnalités s'adaptent aussi au style de votre marque.</p>
+      </div>
+
+      <div class="modules-gallery">
+        <div class="module-card-visual">
+          <div class="module-img-wrapper">
+            <img src="images/module-rdv.jpg" alt="Calendrier" onerror="this.src='https://placehold.co/600x400/009dff/ffffff?text=Image+Manquante'">
+            <div class="module-badge">Populaire</div>
+          </div>
+          <div class="module-content">
+            <h3>📅 Prise de RDV</h3>
+            <p>Synchronisation parfaite avec votre agenda Google ou Outlook.</p>
+          </div>
+        </div>
+
+        <div class="module-card-visual">
+          <div class="module-img-wrapper">
+            <img src="images/module-galerie.jpg" alt="Galerie" onerror="this.src='https://placehold.co/600x400/8e44ad/ffffff?text=Image+Manquante'">
+          </div>
+          <div class="module-content">
+            <h3>📸 Portfolio</h3>
+            <p>Mettez en valeur vos réalisations avec une galerie filtrable.</p>
+          </div>
+        </div>
+
+        <div class="module-card-visual">
+          <div class="module-img-wrapper">
+            <img src="images/module-map.jpg" alt="Carte" onerror="this.src='https://placehold.co/600x400/27ae60/ffffff?text=Image+Manquante'">
+          </div>
+          <div class="module-content">
+            <h3>📍 Carte Custom</h3>
+            <p>Une carte interactive stylisée aux couleurs exactes de votre site.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section id="figma-process" class="section-padding fade-in-section" style="background-color: var(--color-light-bg-alt); padding-top: 4rem;">
+    <div class="container">
+      <div class="split-content-figma">
+        
+        <div class="text-side-figma">
+          <div class="badge-pill" style="background:var(--color-secondary); color:#fff; margin-bottom:1rem; display:inline-block; padding:0.3rem 0.8rem; border-radius:20px; font-size:0.8rem; font-weight:bold;">Processus Créatif</div>
+          <h1>La Puissance de la <br><span class="highlight" style="color:var(--color-primary);">Maquette Figma</span>.</h1>
+          <p>Pourquoi coder à l'aveugle ? Avant d'écrire la première ligne de code, nous modélisons l'intégralité de votre site sur Figma.</p>
+          
+          <ul class="figma-benefits">
+            <li>
+              <div class="icon-box">👁️</div>
+              <div>
+                <strong>Prévisualisation Totale</strong>
+                <p>Voyez exactement à quoi ressemblera votre site. Pas de surprise à la livraison.</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon-box">✏️</div>
+              <div>
+                <strong>Modifications Instantanées</strong>
+                <p>Changer une couleur ou déplacer un bloc prend 2 secondes sur maquette, contre 2 heures en code.</p>
+              </div>
+            </li>
+            <li>
+              <div class="icon-box">💰</div>
+              <div>
+                <strong>Budget Maîtrisé</strong>
+                <p>Valider le design en amont évite les allers-retours coûteux durant le développement.</p>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="visual-side-figma">
+          <div class="figma-interface-mockup">
+            <div class="figma-toolbar">
+              <span class="dot-red"></span><span class="dot-yellow"></span><span class="dot-green"></span>
+              <div class="tool-center">Webeclat_Design_V1</div>
+            </div>
+            
+            <div class="figma-canvas">
+              <div class="canvas-element header-block"></div>
+              <div class="canvas-element hero-block"></div>
+              <div class="canvas-element card-block c1"></div>
+              <div class="canvas-element card-block c2"></div>
+              
+              <div class="cursor-tag client-cursor">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-secondary)"><path d="M0 0l6.5 18.5L10 13l6 6 2.5-2.5-6-6 6.5-2.5z"/></svg>
+                <span style="background:var(--color-secondary);">Client : "J'adore ce bleu !"</span>
+              </div>
+
+              <div class="cursor-tag designer-cursor">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="var(--color-primary)"><path d="M0 0l6.5 18.5L10 13l6 6 2.5-2.5-6-6 6.5-2.5z"/></svg>
+                <span style="background:var(--color-primary);">Designer</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <h2 id="cta-title">Ce style vous correspond ?</h2>
+      <p>Transformons cette maquette en votre véritable site web.</p>
+      <a href="rdv.html" class="btn">Lancer le projet</a>
+      <p><a href="index.html">Retour à l'accueil</a></p>
+    </div>
+  </footer>
+
+  <script>
+    // Configuration des textes par thème pour plus d'immersion
+    const themeContent = {
+      'theme-corporate': {
+        badge: 'Design Sur Mesure',
+        title: 'Votre marque mérite <br><span class="highlight">l\'excellence visuelle</span>.',
+        desc: 'Plongez dans notre atelier de création. Du pixel à la palette, une identité fiable et robuste.',
+        cta: 'Ce style vous correspond ?'
+      },
+      'theme-eco': {
+        badge: 'Approche Organique',
+        title: 'Cultivez votre <br><span class="highlight">présence naturelle</span>.',
+        desc: 'Un design qui respire. Des formes douces et des couleurs apaisantes pour une expérience utilisateur zen.',
+        cta: 'Prêt à planter la graine ?'
+      },
+      'theme-luxe': {
+        badge: 'Haute Couture Web',
+        title: 'L\'Art de la <br><span class="highlight">Distinction</span>.',
+        desc: 'Minimalisme, typographie serif et contrastes profonds pour une image de marque prestigieuse.',
+        cta: 'L\'excellence vous attend.'
+      },
+      'theme-pop': {
+        badge: 'Impact Maximal',
+        title: 'FAITES DU BRUIT <br><span class="highlight">SUR LE WEB</span> !',
+        desc: 'Un design brutaliste et coloré qui ne demande pas la permission pour attirer l\'attention.',
+        cta: 'On lance la révolution ?'
+      }
+    };
+
+    function setTheme(themeName) {
+     // 1. Mise à jour de l'objet de configuration
+const themeContent = {
+  'theme-corporate': {
+    // ... (tes textes existants) ...
+    img: 'https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=600&q=80' // Image Bureau/Tech
+  },
+  'theme-eco': {
+    // ... (tes textes existants) ...
+    img: 'https://images.unsplash.com/photo-1470115636492-6d2b56f9146d?w=600&q=80' // Image Nature
+  },
+  'theme-luxe': {
+    // ... (tes textes existants) ...
+    img: 'https://images.unsplash.com/photo-1550684848-fac1c5b4e853?w=600&q=80' // Image Abstraite Dorée/Sombre
+  },
+  'theme-pop': {
+    // ... (tes textes existants) ...
+    img: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=600&q=80' // Image Casque/Musique colorée
+  }
+};
+
+// 2. Ajout dans la fonction setTheme (à l'intérieur, après les changements de texte)
+setTheme = function(themeName) {
+  // ... (ton code existant pour changer les classes et textes) ...
+
+  // NOUVEAU : Changement de l'image avec animation
+  const heroImg = document.getElementById('hero-dynamic-img');
+  if (themeContent[themeName] && themeContent[themeName].img) {
+      heroImg.style.opacity = 0; // On cache doucement
+      heroImg.style.transform = 'translateY(20px) rotateY(-10deg)'; // On déplace un peu
+
+      setTimeout(() => {
+          heroImg.src = themeContent[themeName].img;
+          heroImg.onload = () => {
+              heroImg.style.opacity = 1;
+              heroImg.style.transform = 'translateY(0) rotateY(-10deg) rotateX(5deg)'; // Retour à la position 3D
+          };
+      }, 300); // On attend que l'opacité soit à 0
+  }
+
+  // ... (ton appel manageEcoParticles) ...
+}
+    }
+
+    // Observer pour les animations au scroll
+    document.addEventListener("DOMContentLoaded", function() {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+      }, { threshold: 0.1 });
+      document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+    });
+    /* --- GESTION DES PARTICULES BIO --- */
+let particleInterval;
+
+function manageEcoParticles(themeName) {
+  const container = document.getElementById('eco-particles');
+  
+  // Nettoyer les particules existantes si on change de thème
+  container.innerHTML = '';
+  clearInterval(particleInterval);
+
+  if (themeName === 'theme-eco') {
+    // Créer des particules régulièrement
+    particleInterval = setInterval(() => {
+      createParticle(container);
+    }, 800); // Une nouvelle particule toutes les 800ms
+  }
+}
+
+function createParticle(container) {
+  const particle = document.createElement('div');
+  particle.classList.add('eco-particle');
+  
+  // Taille aléatoire (pollen vs feuille)
+  const size = Math.random() * 10 + 5; // Entre 5px et 15px
+  
+  // Position horizontale aléatoire
+  const posX = Math.random() * 100;
+  
+  // Durée aléatoire (vitesse)
+  const duration = Math.random() * 10 + 10; // Entre 10s et 20s
+  
+  particle.style.width = `${size}px`;
+  particle.style.height = `${size}px`;
+  particle.style.left = `${posX}vw`;
+  particle.style.animationDuration = `${duration}s`;
+  
+  // Forme parfois feuille, parfois ronde
+  if (Math.random() > 0.5) {
+     particle.style.borderRadius = "0px 10px 0px 10px"; // Forme feuille
+  }
+
+  container.appendChild(particle);
+
+  // Supprimer la particule après son animation pour ne pas surcharger le DOM
+  setTimeout(() => {
+    particle.remove();
+  }, duration * 1000);
+}
+
+// MODIFICATION DE LA FONCTION EXISTANTE setTheme
+// (Remplacez votre ancienne fonction setTheme par celle-ci ou ajoutez l'appel)
+const oldSetTheme = setTheme; // Sauvegarde de l'ancienne si besoin, ou juste réécrivez :
+
+setTheme = function(themeName) {
+  // 1. Logique existante (changement de classe body, textes, etc.)
+  document.body.className = "design-page " + themeName;
+  
+  document.querySelectorAll('.palette-card-visual').forEach(card => {
+    card.classList.remove('active');
+    if(card.getAttribute('onclick').includes(themeName)) {
+      card.classList.add('active');
+    }
+  });
+
+  const content = themeContent[themeName];
+  if (content) {
+    document.getElementById('dynamic-badge').textContent = content.badge;
+    document.getElementById('dynamic-title').innerHTML = content.title;
+    document.getElementById('dynamic-desc').textContent = content.desc;
+    document.getElementById('cta-title').textContent = content.cta;
+  }
+
+  // 2. NOUVEAU : Appel des particules
+  manageEcoParticles(themeName);
+}
+setTheme = function(themeName) {
+    const curtain = document.getElementById('theme-transition-curtain');
+
+    // 1. Définir la couleur du rideau selon le futur thème
+    curtain.className = ''; // Reset
+    if(themeName === 'theme-corporate') curtain.classList.add('curtain-corporate');
+    if(themeName === 'theme-eco') curtain.classList.add('curtain-eco');
+    if(themeName === 'theme-luxe') curtain.classList.add('curtain-luxe');
+    if(themeName === 'theme-pop') curtain.classList.add('curtain-pop');
+
+    // 2. Monter le rideau
+    curtain.style.transform = 'translateY(0)';
+
+    // 3. Attendre que le rideau couvre l'écran (300ms) pour changer le thème
+    setTimeout(() => {
+        // --- TON CODE DE CHANGEMENT DE THÈME EXISTANT ---
+        document.body.className = "design-page " + themeName;
+
+        // Mise à jour des cartes actives
+        document.querySelectorAll('.palette-card-visual').forEach(card => {
+            card.classList.remove('active');
+            if(card.getAttribute('onclick').includes(themeName)) {
+                card.classList.add('active');
+            }
+        });
+
+        // Mise à jour textes + Image Hero (Code de l'Idée 1)
+        const content = themeContent[themeName];
+        if (content) {
+            document.getElementById('dynamic-badge').textContent = content.badge;
+            document.getElementById('dynamic-title').innerHTML = content.title;
+            document.getElementById('dynamic-desc').textContent = content.desc;
+            document.getElementById('cta-title').textContent = content.cta;
+
+            // Changement image (si implémenté)
+            const heroImg = document.getElementById('hero-dynamic-img');
+            if(heroImg && content.img) heroImg.src = content.img;
+        }
+
+        manageEcoParticles(themeName);
+        // ------------------------------------------------
+
+        // 4. Baisser le rideau (vers le haut pour faire "passer" la page)
+        setTimeout(() => {
+             curtain.style.transform = 'translateY(-100%)';
+
+             // Reset position du rideau en bas après l'animation (sans transition pour que ce soit invisible)
+             setTimeout(() => {
+                 curtain.style.transition = 'none';
+                 curtain.style.transform = 'translateY(100%)';
+                 setTimeout(() => { curtain.style.transition = 'transform 0.6s cubic-bezier(0.77, 0, 0.175, 1)'; }, 50);
+             }, 600);
+        }, 100); 
+
+    }, 300); // Fin du délai initial
+}
+  </script>
+  <div id="eco-particles" class="eco-particles-container"></div>
+</body>
+</html>

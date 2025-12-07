@@ -3,23 +3,26 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Webéclat - Création de Sites Web</title>
+  <title>Webeclat - Sites Web Modernes & Accessibles</title>
   <link rel="stylesheet" href="style.css" />
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <!-- Markdown parser pour afficher joliment la réponse de l'IA -->
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
 </head>
 <body>
 
-  <!-- Navigation -->
+  <!-- Navigation avec effet "Micro Lines" -->
   <header class="navbar">
     <div class="container">
-      <div class="logo">Webéclat</div>
+      <div class="logo">Webeclat</div>
       <nav>
         <ul class="nav-links">
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#services">Services</a></li>
-          <li><a href="#portfolio">Portfolio</a></li>
-          <li><a href="#equipe">Équipe</a></li>
-          <li><a href="#contact">Contact</a></li>
+          <li><a href="personnalisation.html" class="micro-line">Personnalisation</a></li>
+          <li><a href="rdv.html" class="micro-line">Disponibilité</a></li>
+          <li><a href="services.html" class="micro-line">Services</a></li>
+          <li><a href="atelier-ia.html" class="micro-line ai-link">Atelier IA ✨</a></li>
+          <li><a href="tarif.html" class="micro-line">Tarifs</a></li>
+          <li><a href="rdv.html" class="btn-nav">Contact</a></li>
         </ul>
       </nav>
     </div>
@@ -29,107 +32,485 @@
   <section class="hero">
     <div class="container hero-content">
       <div class="hero-text">
-        <h1>Des sites web stylés, modernes et accessibles</h1>
-        <p>Nous créons des sites vitrines personnalisés pour les commerçants et artisans de la région lilloise à partir de 300€.</p>
-        <p>Votre boutique en ligne, simplement. Chez Webéclat, nous créons pour vous une boutique en ligne moderne, clé en main, qui valorise vos produits et attire de nouveaux clients. Fini la dépendance aux grandes plateformes ou aux réseaux sociaux : vous disposez de votre propre espace de vente, accessible 24h/24, sur tous les supports.</p>
-        <a href="#contact" class="btn">Demander un devis gratuit</a>
+        <h1>Votre identité numérique, <span class="highlight">unique et clé en main</span>.</h1>
+        <p>Ne dépendez plus des réseaux sociaux. Offrez-vous un site professionnel, moderne et accessible 24h/24 pour toucher de nouveaux clients dans la région lilloise.</p>
+        <div class="hero-buttons">
+          <a href="tarif.html" class="btn">Voir les offres</a>
+          <a href="atelier-ia.html" class="btn-outline">Essayer notre IA ✨</a>
+        </div>
       </div>
       <div class="hero-image">
-        <img src="Logo Webeclat Blanc recadré.png" alt="Création de site web" />
+        <!-- Placeholder pour votre logo ou image principale -->
+        <img src="Logo Webeclat Blanc recadré.png" alt="Création de site web Webéclat" onerror="this.src='https://via.placeholder.com/500x400?text=WebEclat+Hero'"/>
+      </div>
+    </div>
+  </section>
+  
+  <!-- Section Services / Avantages -->
+  <section id="services" class="services section-padding fade-in-section">
+    <div class="container-fluid" style="max-width: 1400px; margin: 0 auto; padding: 0 2rem;"> 
+      
+      <div class="section-header">
+        <span class="badge-pill" style="background:rgba(0,157,255,0.1); color:var(--color-primary); border:1px solid var(--color-primary); margin-bottom:1rem; display:inline-block; padding:0.5rem 1.5rem; border-radius:50px; font-weight:700;">Avantages Webéclat</span>
+        <h2 style="font-size: 3rem;">L'Excellence Digitale</h2>
+        <p>Une infrastructure haut de gamme pour propulser votre activité.</p>
+      </div>
+
+      <div class="services-glow-grid">
+        
+        <div class="card-glow fade-in-up" style="--delay: 0ms;">
+          <div class="glow-bg"></div>
+          <div class="card-glow-inner">
+            <div class="img-frame">
+              <img src="Design personnalisé image.png" alt="Design Unique" class="xxl-img" />
+            </div>
+            <h3>Design Sur Mesure</h3>
+            <p>Une identité graphique unique, taillée pour votre marque, à votre image.</p>
+          </div>
+        </div>
+
+        <div class="card-glow fade-in-up" style="--delay: 150ms;">
+          <div class="glow-bg"></div>
+          <div class="card-glow-inner">
+            <div class="img-frame">
+              <img src="image temps 3.webp" alt="Rapidité" class="xxl-img" />
+            </div>
+            <h3>Disponibilité Immédiate</h3>
+            <p>Lancement rapide et support réactif sans attente. Passer à l'action</p>
+          </div>
+        </div>
+
+        <div class="card-glow fade-in-up" style="--delay: 300ms;">
+          <div class="glow-bg"></div>
+          <div class="card-glow-inner">
+            <div class="img-frame">
+              <img src="Image 15.png" alt="Maintenance" class="xxl-img" />
+            </div>
+            <h3>Tranquillité web</h3>
+            <p>Sécurité, mises à jour, hébergement, maintenace et sauvegardes...</p>
+          </div>
+        </div>
+
+        <div class="card-glow fade-in-up" style="--delay: 450ms;">
+          <div class="glow-bg"></div>
+          <div class="card-glow-inner">
+            <div class="img-frame">
+              <img src="Image réseaux sociaux (1).jpg" alt="Réseaux Sociaux" class="xxl-img" />
+            </div>
+            <h3>Social Ready</h3>
+            <p>Pensé pour booster vos interactions et transformer chaque publication en contenu viral.</p>
+          </div>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Services Section -->
-  <section id="services" class="services">
+  <!-- 1. Section Personnalisation -->
+  <section id="personnalisation" class="split-section bg-white fade-in-section">
+    <div class="split-content">
+      <div class="image-side">
+        <img src="Design personnalisé image.png" alt="Design sur mesure" onerror="this.src='https://via.placeholder.com/600x400?text=Design+Sur+Mesure'">
+      </div>
+      <div class="text-side">
+        <h2>Un Design 100% Personnalisable</h2>
+        <p>Votre entreprise est unique, votre site doit l'être aussi. Nous ne nous contentons pas de modèles standards.</p>
+        <ul class="feature-list">
+          <li><strong>Charte graphique :</strong> Nous adaptons panel de couleurs et polices à votre logo.</li>
+          <li><strong>Mise en page :</strong> Choix de la disposition des blocs (textes, images, galeries).</li>
+          <li><strong>Fonctionnalités :</strong> Ajout de formulaires, cartes Google Maps, et autres à la demande.</li>
+          <li><strong>Maquette sur mesure :</strong> Une prévisualisation complète et personnalisée pour valider le design avant toute mise en production.</li>
+        </ul>
+        <p>Du minimalisme épuré au style dynamique, nous créons l'ambiance qui séduira vos clients.</p>
+
+        <div style="margin-top: 2.5rem;">
+          <a href="personnalisation.html" class="btn-discover" id="transition-link">
+            Découvrir le potentiel 
+            <span style="font-size:1.2rem;">&rarr;</span>
+          </a>
+        </div>
+        </div>
+    </div>
+  </section>
+
+  <!-- NOUVEAU : Section Atelier IA powered by Gemini -->
+  <section id="atelier-ia" class="ai-section fade-in-section">
     <div class="container">
-      <h2>Nos Avantages</h2>
-      <div class="service-cards">
-        <div class="card">
-          <img src="Design personnalisé image.png" alt="Design sur mesure" />
-          <h3>Design personnalisé</h3>
-          <p>Un site qui reflète votre image, adapté à votre activité et à votre clientèle.</p>
+      <div class="ai-header">
+        <h2>L'Atelier d'Idées IA ✨</h2>
+        <p>En manque d'inspiration ? Dites-nous simplement votre métier, et notre intelligence artificielle générera <strong>3 idées de fonctionnalités clés</strong> pour booster votre futur site.</p>
+      </div>
+      
+      <div class="ai-interface">
+        <div class="ai-input-group">
+          <label for="user-business">Quelle est votre activité ?</label>
+          <div class="input-wrapper">
+            <input type="text" id="user-business" placeholder="Ex: Boulangerie, Coach Sportif, Plombier..." />
+            <button id="generate-btn" class="btn-magic">
+              <span class="btn-text">Générer des idées ✨</span>
+              <span class="loader hidden"></span>
+            </button>
+          </div>
         </div>
-        <div class="card">
-          <img src="image temps 3.webp" alt="Rapide Disponibilité" />
-          <h3>Rapide Disponibilité</h3>
-          <p>Un affichage optimal sur smartphone, tablette et ordinateur.</p>
-        </div>
-        <div class="card">
-          <img src="Image 15.png" alt="Hébergement et Maintenance" />
-          <h3>Hébergement + Maintenance Inclus</h3>
-          <p>Nous gérons l’intégralité de la technique pour vous : sécurité, mises à jour, sauvegardes et plus encore.</p>
-        </div>
-        <div class="card">
-          <img src="Image réseaux sociaux (1).jpg" alt="Social media" />
-          <h3>Social media friendly</h3>
-          <p>Un site adapté pour le partage sur les réseaux sociaux et l’engagement communautaire.</p>
+        <div id="ai-result" class="ai-result hidden">
+          <!-- Le contenu généré par l'IA apparaîtra ici -->
         </div>
       </div>
     </div>
   </section>
 
-<section class="split-section">
-  <div class="split-content">
-    <div class="text-side">
-      <h2>Votre boutique, votre univers</h2>
-      <p>Avec Webéclat, vous bénéficiez d’un site e-commerce unique qui vous ressemble. Vendez en ligne facilement tout en affirmant votre identité locale.</p>
-      <a href="#services" class="btn">Voir nos services</a>
+  <section class="split-section fade-in-section">
+    <div class="Coding-content">
+      <div class="coding-side">
+        <h2>Votre boutique, votre univers</h2>
+        <p>Avec Webéclat, vous bénéficiez d’un site unique qui vous ressemble. Trouvez de <b>nouveaux clients</b> facilement tout en affirmant votre identité locale.</p>
+        <div class="bullet"><span class="dot"></span><span>Hébergement & Maintenance : Tranquillité d'esprit</span></div>
+        <div class="bullet"><span class="dot"></span><span>Sections modulaires et évolutives</span></div>
+        <div class="bullet"><span class="dot"></span><span>Accompagnement humain, simple et efficace</span></div>
+        <div class="hero-cta" style="margin-top: 1rem;">
+          <a href="services.html" class="btn-coding">Voir nos services</a>
+          <a href="rdv.html" class="btn btn-coding-rdv">Planifier un RDV</a>
+        </div>
+      </div>
+      <div class="image-coding-side">
+        <img src="Image codage.jpg" alt="Création de boutique en ligne">
+      </div>
     </div>
-    <div class="image-side">
-      <img src="Image codage.jpg" alt="Boutique en ligne">
-    </div>
-  </div>
-</section>
-
-  <!-- Portfolio Section -->
-  <section id="portfolio" class="portfolio">
+  </section>
+  
+  <!-- 5. Section Tarifs -->
+  <section id="tarifs" class="pricing-section fade-in-section">
     <div class="container">
-      <h2>Portfolio</h2>
-      <p>Voici quelques exemples de style de réalisations possible :</p>
-      <div class="portfolio-gallery">
-        <img src="Exemple 1.png" alt="Site 1" />
-        <img src="Exemple 2.png" alt="Site 2" />
-        <img src="Exemple 3.png" alt="Site 3" />
+      <h2>Nos Tarifs Transparents</h2>
+      <div class="pricing-wrapper">
+        
+        <!-- Offre Start -->
+        <div class="pricing-card">
+          <div class="header">
+            <h3>Pack Vitrine</h3>
+            <div class="price">300€</div>
+            <span class="period">Petit prix, grand impact</span>
+          </div>
+          <ul>
+            <li>✅ Site One-Page (toutes infos sur 1 page)</li>
+            <li>✅ Design Personnalisé et adapté à votre domaine</li>
+            <li>✅ Formulaire de contact</li>
+            <li>✅ Optimisé Mobile & Tablette</li>
+            <li>❌ Pas de modifications mensuelles</li>
+          </ul>
+          <a href="#contact" class="btn-price">Choisir ce pack</a>
+        </div>
+
+        <!-- Offre Start -->
+        <div class="pricing-card">
+          <div class="header">
+            <h3>Pack Sérénité</h3>
+            <div class="price">600€</div>
+            <span class="period">Présence totale, confiance assurée</span>
+          </div>
+          <ul>
+            <li>✅ Site Multi-pages (agencé selon votre besoin)</li>
+            <li>✅ Design sur mesure à votre image</li>
+            <li>✅ Ensemble des fonctionnalités</li>
+            <li>✅ Réalisation de maquette</li>
+            <li>✅ Optimisation SEO</li>
+            <li>✅ Support Avancée</li>
+            <li>❌ Pas de modifications mensuelles</li>
+          </ul>
+          <a href="#contact" class="btn-price">Choisir ce pack</a>
+        </div>
+
+        <!-- Offre Premium -->
+        <div class="pricing-card featured">
+          <div class="badge">Recommandé</div>
+          <div class="header">
+            <h3>Pack Personnalisé</h3>
+            <div class="price">Sur Devis</div>
+            <span class="period">Votre solution idéale</span>
+          </div>
+          <ul>
+            <li>✅ Catalogue Illimité (Accueil, Services, Galerie...)</li>
+            <li>✅ Design Premium & Animations démarquantes</li>
+            <li>✅ Réalisation de maquette de prévisualisation du design</li>
+            <li>✅ Hébergement & Maintenance Inclus</li>
+            <li>✅ Possibilté d'intégration IA</li>
+            <li>✅ Blog ou actualités intégrés</li>
+            <li>✅ Modifs mineures offertes après parution</li>
+          </ul>
+          <a href="#contact" class="btn-price">Demander un devis</a>
+        </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Équipe Section -->
-  <section id="equipe" class="equipe">
+  <section id="mobile-focus" class="section-padding fade-in-section" style="background-color: #f8faff; overflow: hidden;">
     <div class="container">
-      <h2>Notre Équipe</h2>
-      <div class="team-members">
-        <div class="member">
-          <img src="Image perso1.jpeg" alt="Anguerand" />
-          <h3>Anguerand</h3>
-          <p>Designer & Développeur Web</p>
+      <div class="mobile-layout">
+        
+        <div class="mobile-text">
+          <div class="badge-pill" style="background:var(--color-primary); color:#fff; border:none;">70% du Trafic</div>
+          <h2>Ne perdez pas les clients <br><span style="color:var(--color-dark-bg);">sur Smartphone.</span></h2>
+          <p>Un site qui ne s'affiche pas parfaitement sur mobile est un site qui perd de l'argent. Nous concevons l'expérience "au pouce" pour une conversion maximale.</p>
+          
+          <div class="mobile-stats">
+            <div class="stat-item">
+              <span class="big-num">3x</span>
+              <span class="desc">Plus de contacts via les boutons d'appel rapides.</span>
+            </div>
+            <div class="stat-item">
+              <span class="big-num">0.5s</span>
+              <span class="desc">Temps de chargement instantané en 4G.</span>
+            </div>
+          </div>
+
+          <a href="rdv.html" class="btn" style="margin-top: 2rem;">Tester sur mon mobile</a>
         </div>
-        <div class="member">
-          <img src="Image perso2.jpeg" alt="Gabin" />
-          <h3>Gabin</h3>
-          <p>Chargé de Design & Communication</p>
+
+        <div class="mobile-visual">
+          <div class="iphone-mockup">
+            <div class="iphone-notch"></div>
+            <div class="iphone-screen">
+              <div class="app-header">
+                <div class="menu-burger"></div>
+                <div class="logo-dot"></div>
+              </div>
+              <div class="app-hero">
+                <h3>Artisan<br>Lillois</h3>
+                <div class="app-btn-row">
+                  <div class="app-btn primary">Appeler</div>
+                  <div class="app-btn secondary">Devis</div>
+                </div>
+              </div>
+              <div class="app-content">
+                <div class="app-card"></div>
+                <div class="app-card"></div>
+                <div class="app-card"></div>
+              </div>
+              
+              <div class="app-notification">
+                <div class="notif-icon">👋</div>
+                <div class="notif-text">Nouvelle demande de RDV !</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="circle-bg c-1"></div>
+          <div class="circle-bg c-2"></div>
         </div>
+
       </div>
     </div>
   </section>
 
-  <!-- Contact Section -->
-  <section id="contact" class="contact">
+  <!-- 3. Section Processus (Prise de RDV étape par étape) -->
+  <section id="processus" class="process-section fade-in-section">
     <div class="container">
-      <h2>Contactez-nous</h2>
-      <p>Besoin d’un site vitrine ? Parlons-en !</p>
-      <p>Email : <a href="mailto:webeclat.lille@gmail.com" style="color: inherit; text-decoration: none;">webeclat.lille@gmail.com</a></p>
-      <a href="mailto:webeclat.lille@gmail.com" style="color: inherit; text-decoration: none; color: aliceblue;" class="btn">Nous écrire</a>
+      <h2>Votre site en 4 étapes simples</h2>
+      <div class="steps-grid">
+        <div class="step-card">
+          <div class="step-number">1</div>
+          <h3>Prise de contact</h3>
+          <p>Vous nous envoyez un message via le formulaire ou par email. On discute de vos besoins.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">2</div>
+          <h3>Proposition & Devis</h3>
+          <p>Nous vous envoyons une maquette ou une structure détaillée avec un devis clair.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">3</div>
+          <h3>Création</h3>
+          <p>Nous développons votre site. Vous suivez l'avancée et nous faites vos retours.</p>
+        </div>
+        <div class="step-card">
+          <div class="step-number">4</div>
+          <h3>Lancement !</h3>
+          <p>Mise en ligne officielle. Votre site est visible par le monde entier.</p>
+        </div>
+      </div>
+      <div class="center-btn">
+        <a href="rdv.html" class="btn">Lancer l'étape 1 maintenant</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- 6. Section FAQ -->
+  <section id="faq" class="faq-section fade-in-section">
+    <div class="container">
+      <h2>Questions Fréquentes ❔</h2>
+      <div class="faq-grid">
+        <div class="faq-item">
+          <h4>Ai-je besoin de payer un abonnement ?</h4>
+          <p>Pour le Pack Vitrine, c'est un paiement unique pour la création. Seul l'hébergement (le "loyer" du site sur internet) est à renouveler annuellement à petit prix.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Le site sera-t-il visible sur Google ?</h4>
+          <p>Oui, nous construisons tous nos sites en respectant les bonnes pratiques de Google (SEO de base) pour qu'il soit bien indexé.</p>
+        </div>
+        <div class="faq-item">
+          <h4>Puis-je modifier les textes moi-même ?</h4>
+          <p>Evidemment nous vous donnons la main sur les textes, ou si vous préférez nous pouvons gérer les modifications pour vous via notre forfait maintenance.</p>
+        </div>
+      </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="footer">
     <div class="container">
-      <p>&copy; 2025 Webéclat. Créé avec passion par deux jeunes entrepreneurs de 16 ans.</p>
+      <p><b>&copy; 2025 Webéclat.</b> Créé avec passion par deux jeunes entrepreneurs de 17 ans.</p>
     </div>
   </footer>
+ 
+<!-- Script pour les animations au scroll -->
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const observerOptions = {
+        root: null,
+        rootMargin: '0px',
+        threshold: 0.1
+      };
 
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, observerOptions);
+
+      const sections = document.querySelectorAll('.fade-in-section');
+      sections.forEach(section => {
+        observer.observe(section);
+      });
+    // --- LOGIQUE GEMINI API ---
+      const generateBtn = document.getElementById('generate-btn');
+      const businessInput = document.getElementById('user-business');
+      const resultArea = document.getElementById('ai-result');
+      const loader = generateBtn.querySelector('.loader');
+      const btnText = generateBtn.querySelector('.btn-text');
+      const aiInterface = document.querySelector('.ai-interface');
+
+      generateBtn.addEventListener('click', async () => {
+        const business = businessInput.value.trim();
+        if (!business) {
+          alert("Merci d'entrer votre activité (ex: Boulangerie)");
+          return;
+        }
+
+        // UI Loading State
+        btnText.textContent = "Réflexion en cours...";
+        loader.classList.remove('hidden');
+        generateBtn.disabled = true;
+        resultArea.classList.add('hidden');
+        resultArea.innerHTML = '';
+
+        try {
+          const apiKey = "AIzaSyCjV3StRtKvKerAqWUOodoJKmOqYiZZ3Is"; // API Key handled by environment
+          const prompt = `Tu es un expert consultant web pour l'agence Webéclat. L'utilisateur est un professionnel dans le domaine suivant : "${business}".
+          Propose 3 idées concises, créatives et utiles de fonctionnalités ou de sections pour son futur site web.
+          Formatte la réponse en Markdown simple avec des puces. Sois encourageant et professionnel. Utilise des émojis.`;
+
+          const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${apiKey}`, {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+              contents: [{
+                parts: [{ text: prompt }]
+              }]
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error('Erreur API');
+          }
+
+          const data = await response.json();
+          const generatedText = data.candidates[0].content.parts[0].text;
+
+          // Display Result
+          aiInterface.classList.add('expanded');
+          resultArea.innerHTML = marked.parse(generatedText);
+          resultArea.classList.remove('hidden');
+
+        } catch (error) {
+          console.error(error);
+          resultArea.innerHTML = '<p style="color:red;">Oups, une petite erreur est survenue. Réessayez !</p>';
+          resultArea.classList.remove('hidden');
+        } finally {
+          // Reset UI
+          btnText.textContent = "Générer des idées ✨";
+          loader.classList.add('hidden');
+          generateBtn.disabled = false;
+        }
+      });
+    });
+    
+  </script>
+  <div class="transition-overlay">
+    <div class="transition-layer layer-1"></div>
+    <div class="transition-layer layer-2"></div>
+    <div class="transition-layer layer-3"></div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      const transitionLink = document.getElementById('transition-link');
+      const overlay = document.querySelector('.transition-overlay');
+
+      if (transitionLink && overlay) {
+        transitionLink.addEventListener('click', function(e) {
+          e.preventDefault(); 
+          const targetUrl = this.href;
+
+          // 1. Déclenche l'animation des vagues
+          overlay.classList.add('active');
+
+          // 2. On attend 1 seconde (1000ms) pour que l'effet vague soit bien fini
+          // Cela permet à l'utilisateur d'apprécier la fluidité avant le chargement
+          setTimeout(function() {
+            window.location.href = targetUrl;
+          }, 1000);
+        });
+      }
+    });
+  </script>
+  <div class="ai-portal-overlay">
+  <div class="portal-layer layer-1"></div>
+  <div class="portal-layer layer-2"></div>
+  <div class="portal-layer layer-3"></div>
+  
+  <div class="portal-content">
+    <div class="neural-loader">
+      <span></span><span></span><span></span>
+    </div>
+    <div class="portal-text">Connexion au Noyau IA...</div>
+  </div>
+</div>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    const aiLink = document.querySelector('.ai-link'); 
+    const overlay = document.querySelector('.ai-portal-overlay');
+
+    if (aiLink && overlay) {
+      aiLink.addEventListener('click', function(e) {
+        e.preventDefault();
+        const targetUrl = this.href;
+
+        // 1. Active le Vortex
+        overlay.classList.add('active');
+
+        // 2. Redirection après 1.5 seconde (laisse le temps à l'anim de se finir)
+        setTimeout(function() {
+          window.location.href = targetUrl;
+        }, 1500);
+      });
+    }
+  });
+</script>
 </body>
-</html>

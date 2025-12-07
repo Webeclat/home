@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prendre Rendez-vous - Webéclat</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+</head>
+<body class="rdv-page">
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html" style="text-decoration:none; color:inherit;">Webéclat</a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="personnalisation.html" class="micro-line">Personnalisation</a></li>
+          <li><a href="rdv.html" class="micro-line">Disponibilité</a></li>
+          <li><a href="services.html" class="micro-line">Services</a></li>
+          <li><a href="atelier-ia.html" class="micro-line ai-link">Atelier IA ✨</a></li>
+          <li><a href="tarif.html" class="micro-line">Tarifs</a></li>
+          <li><a href="rdv.html" class="btn-nav">Contact</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="hero contact-hero">
+    <div class="hero-overlay-gradient"></div>
+    <div class="container hero-content relative-z">
+      <div class="hero-text">
+        <span class="badge-pill-light">Démarrage de projet</span>
+        <h1>Parlons de votre <br><span class="highlight">future réussite</span>.</h1>
+        <p>Un projet web ? Une refonte ? Choisissez le créneau qui vous arrange pour une visio gratuite de 30 min ou détaillez votre demande par écrit.</p>
+        
+        <div class="contact-methods-grid">
+          <div class="method-card">
+            <i class="fas fa-phone-alt"></i>
+            <div><strong>Appel Direct</strong><span>A Définir</span></div>
+          </div>
+          <div class="method-card">
+            <i class="fas fa-envelope"></i>
+            <div><strong>Email</strong><span>webeclat.lille@gmail.com</span></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="hero-image">
+  <div class="calendar-3d-mockup">
+      <div class="cal-header">Octobre</div>
+      <div class="cal-grid">
+          <span></span><span></span><span>1</span><span>2</span>
+          <span>3</span><span>4</span><span class="active">5</span><span>6</span>
+          <span>7</span><span>8</span><span>9</span><span>10</span>
+      </div>
+      <div class="cal-badge">Dispo ✅</div>
+  </div>
+</div>
+    </div>
+  </section>
+
+  <section class="section-padding bg-white fade-in-section" id="calendrier">
+    <div class="container">
+      <div class="section-header">
+        <h2>Réservez un appel Visio</h2>
+        <p>Sélectionnez une date et une heure ci-dessous. Nous recevrons instantanément votre demande.</p>
+      </div>
+
+      <div class="booking-interface">
+        <div class="booking-calendar">
+          <div class="calendar-controls">
+            <button class="cal-nav" id="prevMonth">&lt;</button>
+            <span class="current-month" id="calendar-title">Chargement...</span>
+            <button class="cal-nav" id="nextMonth">&gt;</button>
+          </div>
+          <div class="calendar-days-header">
+            <span>Lun</span><span>Mar</span><span>Mer</span><span>Jeu</span><span>Ven</span><span>Sam</span><span>Dim</span>
+          </div>
+          <div class="calendar-days-grid" id="calendar-grid">
+            </div>
+        </div>
+
+        <div class="booking-slots">
+          <h3 id="selected-date-display">Sélectionnez une date</h3>
+          <p class="slots-info">Durée : 30 min • Visio Google Meet</p>
+          
+          <div class="slots-grid" id="time-slots">
+            <button class="time-slot">09:00</button>
+            <button class="time-slot">10:00</button>
+            <button class="time-slot">11:00</button>
+            <button class="time-slot">14:00</button>
+            <button class="time-slot">15:30</button>
+            <button class="time-slot">17:00</button>
+          </div>
+
+          <form action="https://formspree.io/f/xeoylqvy" method="POST" class="booking-summary hidden" id="booking-form-mini">
+            <hr>
+            <p style="font-size:0.9rem; color:#666; margin-bottom:10px;">Vous avez choisi le : <strong id="summary-date">...</strong> à <strong id="summary-time">...</strong></p>
+            
+            <input type="hidden" name="sujet" value="Demande de RDV Visio">
+            <input type="hidden" name="date_rdv" id="input-date-hidden">
+            <input type="hidden" name="heure_rdv" id="input-time-hidden">
+
+            <label>Vos coordonnées pour valider :</label>
+            <input type="text" name="nom" placeholder="Nom complet" class="input-light" required>
+            <input type="email" name="email" placeholder="Email pro" class="input-light" required>
+            <button type="submit" class="btn btn-full-width">Confirmer le RDV 📅</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="split-section bg-light fade-in-section" id="projet">
+    <div class="container split-content">
+      <div class="text-side" style="flex:1;">
+        <h2>Vous préférez écrire ?</h2>
+        <p>Détaillez votre projet. Ce formulaire est envoyé directement à notre équipe technique pour étude.</p>
+        
+        <div class="trust-badges">
+          <div class="t-badge"><i class="fas fa-check-circle"></i> Réponse sous 24h</div>
+          <div class="t-badge"><i class="fas fa-file-invoice"></i> Devis gratuit & sans engagement</div>
+          <div class="t-badge"><i class="fas fa-lock"></i> Données sécurisées</div>
+        </div>
+      </div>
+
+      <div class="form-side-wrapper">
+        <form action="https://formspree.io/f/xeoylqvy" method="POST" class="smart-form">
+          <input type="hidden" name="sujet" value="Nouveau Projet Détaillé (Site Web)">
+
+          <div class="form-group" style="margin-bottom: 3rem;">
+            <label>Quel est votre besoin ?</label>
+            <div class="radio-grid">
+              <label class="radio-card">
+                <input type="radio" name="projet" value="Site Vitrine" checked>
+                <div class="rc-content">
+                  <i class="fas fa-store"></i>
+                  <span>Site Vitrine</span>
+                </div>
+              </label>
+              
+              <label class="radio-card">
+                <input type="radio" name="projet" value="Site Avancé">
+                <div class="rc-content">
+                  <i class="fas fa-rocket"></i>
+                  <span>Site Avancé</span>
+                </div>
+              </label>
+              
+              <label class="radio-card">
+                <input type="radio" name="projet" value="Refonte">
+                <div class="rc-content">
+                  <i class="fas fa-sync-alt"></i>
+                  <span>Refonte</span>
+                </div>
+              </label>
+              
+              <label class="radio-card">
+                <input type="radio" name="projet" value="Évolution esthétique">
+                <div class="rc-content">
+                  <i class="fas fa-paint-brush"></i>
+                  <span>Visuelle</span>
+                </div>
+              </label>
+              
+              <label class="radio-card">
+                <input type="radio" name="projet" value="Autres">
+                <div class="rc-content">
+                  <i class="fas fa-ellipsis-h"></i>
+                  <span>Autres</span>
+                </div>
+              </label>
+            </div>
+          </div>
+
+          <div class="form-group">
+            <div class="budget-header">
+              <label>Budget estimé</label>
+              <span id="budget-display" class="budget-value">300€ - 600€</span>
+            </div>
+            <input type="range" min="1" max="5" value="1" class="range-slider" id="budget-range" name="budget_niveau">
+            <input type="hidden" name="budget_texte" id="budget-text-hidden" value="300€ - 600€">
+            
+            <div class="range-labels">
+              <span>Petit</span>
+              <span>Moyen</span>
+              <span>Confortable</span>
+              <span>Grand</span>
+            </div>
+          </div>
+
+          <div class="form-row">
+            <div class="form-group">
+              <label>Nom & Prénom</label>
+              <input type="text" name="nom" required placeholder="Votre nom">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" required placeholder="contact@votre-entreprise.com">
+            </div>
+          </div>
+
+          <div class="form-group">
+            <label>Description du projet</label>
+            <textarea name="message" rows="6" placeholder="Parlez-nous de vos objectifs, vos délais, vos exemples de sites préférés..."></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-submit">Envoyer mon projet 🚀</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <footer class="footer">
+    <div class="container">
+      <p><b>&copy; 2025 Webéclat.</b> L'agence web Lilloise accessible.</p>
+    </div>
+  </footer>
+
+  <script>
+  document.addEventListener("DOMContentLoaded", function() {
+    
+    /* --- 1. LOGIQUE DU BUDGET SLIDER (Mise à jour) --- */
+      const budgetSlider = document.getElementById('budget-range');
+      const budgetDisplay = document.getElementById('budget-display');
+      const budgetInputHidden = document.getElementById('budget-text-hidden');
+
+      const budgetMap = {
+        1: { text: "300€ - 600€", label: "Start" },
+        2: { text: "600€ - 1000€", label: "Essentiel" },
+        3: { text: "1000€ - 1500€", label: "Confort" },
+        4: { text: "1500€ - 2000€", label: "Premium" },
+        5: { text: "+ 2000€", label: "Sur Mesure" }
+      };
+
+      if(budgetSlider) {
+        budgetSlider.addEventListener('input', function() {
+          const val = this.value;
+          const data = budgetMap[val];
+          budgetDisplay.textContent = data.text;
+          budgetInputHidden.value = `${data.text} (${data.label})`;
+          if(val >= 4) budgetDisplay.style.color = "var(--color-primary)";
+          else budgetDisplay.style.color = "var(--color-dark-heading)";
+        });
+      }
+
+    /* --- 2. CALENDRIER FONCTIONNEL --- */
+    const calendarGrid = document.getElementById('calendar-grid');
+    const calendarTitle = document.getElementById('calendar-title');
+    const prevBtn = document.getElementById('prevMonth');
+    const nextBtn = document.getElementById('nextMonth');
+    
+    const selectedDateDisplay = document.getElementById('selected-date-display');
+    const summaryDate = document.getElementById('summary-date');
+    const inputDateHidden = document.getElementById('input-date-hidden');
+
+    let currentDate = new Date(); 
+    
+    function renderCalendar(date) {
+      if(!calendarGrid) return; 
+
+      const year = date.getFullYear();
+      const month = date.getMonth();
+      
+      const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+      calendarTitle.textContent = `${monthNames[month]} ${year}`;
+      
+      calendarGrid.innerHTML = "";
+
+      const firstDayIndex = new Date(year, month, 1).getDay(); 
+      const adjustedFirstDayIndex = firstDayIndex === 0 ? 6 : firstDayIndex - 1;
+      const daysInMonth = new Date(year, month + 1, 0).getDate();
+
+      for (let i = 0; i < adjustedFirstDayIndex; i++) {
+        const emptyCell = document.createElement('span');
+        emptyCell.classList.add('day-empty');
+        calendarGrid.appendChild(emptyCell);
+      }
+
+      const today = new Date();
+      today.setHours(0,0,0,0);
+
+      for (let i = 1; i <= daysInMonth; i++) {
+        const dayCell = document.createElement('span');
+        dayCell.textContent = i;
+        dayCell.classList.add('day');
+
+        const checkDate = new Date(year, month, i);
+        const dayOfWeek = checkDate.getDay();
+
+        if (dayOfWeek === 0 || dayOfWeek === 6) {
+          dayCell.classList.add('weekend');
+        } else if (checkDate < today) {
+          dayCell.classList.add('disabled');
+        } else {
+          dayCell.addEventListener('click', () => selectDay(dayCell, i, month, year));
+        }
+        
+        if(inputDateHidden.value === `${i} ${monthNames[month]} ${year}`) {
+           dayCell.classList.add('selected');
+        }
+
+        calendarGrid.appendChild(dayCell);
+      }
+    }
+
+    function selectDay(element, day, month, year) {
+      document.querySelectorAll('.day').forEach(d => d.classList.remove('selected'));
+      element.classList.add('selected');
+
+      const monthNames = ["Janvier", "Février", "Mars", "Avril", "Mai", "Juin", "Juillet", "Août", "Septembre", "Octobre", "Novembre", "Décembre"];
+      const dateString = `${day} ${monthNames[month]} ${year}`;
+      
+      selectedDateDisplay.textContent = dateString;
+      selectedDateDisplay.style.color = "var(--color-primary)"; 
+      summaryDate.textContent = dateString;
+      inputDateHidden.value = dateString;
+      
+      document.getElementById('booking-form-mini').classList.add('hidden');
+      document.querySelectorAll('.time-slot').forEach(t => t.classList.remove('active'));
+    }
+
+    if(prevBtn && nextBtn) {
+      prevBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() - 1);
+        renderCalendar(currentDate);
+      });
+      nextBtn.addEventListener('click', () => {
+        currentDate.setMonth(currentDate.getMonth() + 1);
+        renderCalendar(currentDate);
+      });
+    }
+    
+    renderCalendar(currentDate);
+
+    /* --- 3. GESTION DES HEURES (SLOTS) --- */
+    const timeSlots = document.querySelectorAll('.time-slot');
+    const bookingForm = document.getElementById('booking-form-mini');
+    const summaryTime = document.getElementById('summary-time');
+    const inputTimeHidden = document.getElementById('input-time-hidden');
+
+    timeSlots.forEach(slot => {
+      slot.addEventListener('click', function() {
+        if(!inputDateHidden.value) {
+          alert("Veuillez d'abord cliquer sur un jour dans le calendrier.");
+          selectedDateDisplay.style.color = "red";
+          setTimeout(() => selectedDateDisplay.style.color = "", 1000);
+          return;
+        }
+
+        timeSlots.forEach(s => s.classList.remove('active'));
+        this.classList.add('active');
+        
+        const time = this.textContent;
+        summaryTime.textContent = time;
+        inputTimeHidden.value = time;
+
+        bookingForm.classList.remove('hidden');
+        bookingForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      });
+    });
+
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('is-visible'); });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.fade-in-section').forEach(section => observer.observe(section));
+
+    /* --- 4. RÉCUPÉRATION DU MESSAGE DEPUIS TARIFS (NOUVEAU) --- */
+    const urlParams = new URLSearchParams(window.location.search);
+    const messagePre = urlParams.get('premessage');
+
+    if (messagePre) {
+      const textArea = document.querySelector('textarea[name="message"]');
+      if (textArea) {
+        textArea.value = "Bonjour,\n\n" + messagePre + "\n\n[Détaillez votre besoin ici...]";
+        textArea.style.border = "2px solid var(--color-primary)";
+        setTimeout(() => { textArea.style.border = ""; }, 2000);
+      }
+    }
+
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,754 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Atelier IA Ultimate - Webeclat</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <style>
+    /* --- VARIABLES & RESET --- */
+    :root {
+      --color-primary: #009dff;
+      --color-secondary: #8e44ad;
+      --color-accent-ai: #ffd700;
+      --color-dark-bg: #0f0c29;
+      --color-light-bg: #f8faff;
+      --color-text-dark: #2c3e50;
+      --color-text-light: #ffffff;
+      --border-radius-md: 8px;
+      --border-radius-xl: 20px;
+      --shadow-lg: 0 10px 30px rgba(0,0,0,0.1);
+      --font-main: 'Inter', sans-serif;
+    }
+
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    
+    body {
+      font-family: var(--font-main);
+      color: var(--color-text-dark);
+      background-color: #ffffff;
+      line-height: 1.6;
+    }
+
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 20px;
+      position: relative;
+      z-index: 2;
+    }
+
+    /* --- HERO SECTION (Design Webéclat) --- */
+    .ai-master-hero {
+      background: linear-gradient(135deg, var(--color-dark-bg) 0%, #1a0033 100%);
+      padding: 6rem 0 5rem;
+      color: var(--color-text-light);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    /* Effet de fond lumineux */
+    .ai-master-hero::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: 
+        radial-gradient(circle at 20% 80%, rgba(0, 157, 255, 0.15) 0%, transparent 50%),
+        radial-gradient(circle at 80% 20%, rgba(142, 68, 173, 0.15) 0%, transparent 50%);
+      z-index: 1;
+    }
+
+    .hero-content {
+      display: flex;
+      align-items: center;
+      gap: 3rem;
+      margin-bottom: 4rem;
+    }
+
+    .hero-text { flex: 1; }
+    .hero-image { flex: 1; }
+    .hero-image img { width: 100%; border-radius: var(--border-radius-xl); box-shadow: 0 20px 40px rgba(0,0,0,0.3); }
+
+    h1 { font-size: 3rem; line-height: 1.2; margin-bottom: 1.5rem; font-weight: 800; }
+    
+    .ai-glowing-text {
+      background: linear-gradient(90deg, #ffd700, #ff6b6b, #4ecdc4, #45b7d1, #96ceb4, #feca57, #ff9ff3);
+      background-size: 300% 300%;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      animation: gradientShift 8s ease infinite;
+    }
+    
+    @keyframes gradientShift {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+
+    .ai-power-badge {
+      background: rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      border-radius: 50px;
+      padding: 0.5rem 1.5rem;
+      display: inline-block;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 1px;
+      font-size: 0.9rem;
+      text-transform: uppercase;
+    }
+
+    /* --- OUTILS GRID --- */
+    .ai-tools-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 2rem;
+    }
+    
+    .ai-tool-card {
+      background: rgba(255, 255, 255, 0.05);
+      border-radius: var(--border-radius-xl);
+      padding: 2rem;
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      backdrop-filter: blur(5px);
+    }
+    
+    .ai-tool-card:hover {
+      transform: translateY(-8px);
+      border-color: var(--color-primary);
+      box-shadow: 0 15px 30px rgba(0, 157, 255, 0.2);
+      background: rgba(255, 255, 255, 0.08);
+    }
+    
+    .ai-tool-icon { font-size: 2.5rem; margin-bottom: 1rem; }
+
+    /* --- WORKSPACE INTERFACE --- */
+    .ai-interface-section {
+      padding: 4rem 0;
+      background: var(--color-light-bg);
+    }
+
+    .ai-workspace {
+      background: white;
+      border-radius: var(--border-radius-xl);
+      box-shadow: var(--shadow-lg);
+      overflow: hidden;
+      border: 1px solid #e1e8ed;
+      margin-top: -3rem; /* Chevauchement stylé */
+      position: relative;
+      z-index: 10;
+    }
+
+    .ai-workspace-header {
+      background: #1a1c2e;
+      color: white;
+      padding: 1rem 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #343a40;
+    }
+
+    /* Tabs Navigation */
+    .ai-tab-container {
+      display: flex;
+      background: #f1f3f5;
+      overflow-x: auto;
+      padding: 0.5rem 0.5rem 0;
+      gap: 0.5rem;
+      border-bottom: 1px solid #dee2e6;
+    }
+
+    .ai-tab {
+      padding: 1rem 1.2rem;
+      background: transparent;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      color: #6c757d;
+      white-space: nowrap;
+      transition: all 0.3s;
+      border-radius: 8px 8px 0 0;
+      font-size: 0.9rem;
+    }
+
+    .ai-tab:hover { background: rgba(0, 0, 0, 0.05); color: var(--color-primary); }
+    
+    .ai-tab.active {
+      color: var(--color-primary);
+      background: white;
+      box-shadow: 0 -2px 10px rgba(0,0,0,0.05);
+      position: relative;
+    }
+    .ai-tab.active::after {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: var(--color-primary);
+      border-radius: 3px 3px 0 0;
+    }
+
+    .ai-workspace-content { padding: 2.5rem; min-height: 400px; }
+    
+    .ai-tab-content { display: none; animation: fadeIn 0.4s ease; }
+    .ai-tab-content.active { display: block; }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    /* Form Elements */
+    .ai-input-area { margin-bottom: 1.5rem; }
+    .ai-input-area label { display: block; margin-bottom: 0.8rem; font-weight: 700; color: #34495e; }
+    
+    .ai-textarea, select.ai-textarea {
+      width: 100%;
+      padding: 1rem;
+      border: 2px solid #e9ecef;
+      border-radius: var(--border-radius-md);
+      font-family: var(--font-main);
+      font-size: 1rem;
+      transition: border-color 0.3s, box-shadow 0.3s;
+      background: #fcfcfc;
+    }
+    
+    .ai-textarea:focus {
+      outline: none;
+      border-color: var(--color-primary);
+      box-shadow: 0 0 0 3px rgba(0, 157, 255, 0.1);
+      background: white;
+    }
+
+    /* Options Grid (Selection buttons) */
+    .ai-options-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+      gap: 1rem;
+      margin: 1.5rem 0;
+    }
+    
+    .ai-option {
+      background: white;
+      border: 2px solid #e9ecef;
+      border-radius: var(--border-radius-md);
+      padding: 1rem;
+      cursor: pointer;
+      text-align: center;
+      transition: all 0.2s;
+      font-weight: 500;
+    }
+    
+    .ai-option:hover { border-color: #bdc3c7; transform: translateY(-2px); }
+    .ai-option.selected {
+      border-color: var(--color-primary);
+      background: rgba(0, 157, 255, 0.05);
+      color: var(--color-primary);
+      font-weight: 700;
+    }
+
+    /* Generate Button */
+    .ai-generate-btn {
+      background: linear-gradient(135deg, var(--color-primary) 0%, var(--color-secondary) 100%);
+      color: white;
+      border: none;
+      border-radius: var(--border-radius-md);
+      padding: 1rem 2.5rem;
+      font-weight: 700;
+      font-size: 1.1rem;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+      transition: all 0.3s;
+      margin-top: 1rem;
+      box-shadow: 0 4px 15px rgba(0, 157, 255, 0.3);
+    }
+    
+    .ai-generate-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 25px rgba(0, 157, 255, 0.4);
+    }
+    .ai-generate-btn:disabled { opacity: 0.7; cursor: wait; }
+
+    /* Result Area */
+    .ai-result-area {
+      margin-top: 2.5rem;
+      padding: 2rem;
+      background: #f8f9fa;
+      border-radius: var(--border-radius-md);
+      border-left: 5px solid var(--color-primary);
+      min-height: 100px;
+    }
+    .ai-result-area.hidden { display: none; }
+    
+    /* Markdown Styles inside Result */
+    .ai-result-area h1, .ai-result-area h2, .ai-result-area h3 { margin-top: 1.5rem; margin-bottom: 0.8rem; color: #2c3e50; }
+    .ai-result-area h1:first-child, .ai-result-area h2:first-child { margin-top: 0; }
+    .ai-result-area ul { margin-left: 1.5rem; margin-bottom: 1rem; }
+    .ai-result-area li { margin-bottom: 0.5rem; }
+    .ai-result-area p { margin-bottom: 1rem; }
+
+    /* Palette de couleurs */
+    .ai-color-palette { display: flex; gap: 1rem; margin-bottom: 1.5rem; flex-wrap: wrap; }
+    .ai-color-item {
+      width: 80px; height: 80px;
+      border-radius: 12px;
+      display: flex; flex-direction: column;
+      align-items: center; justify-content: center;
+      font-size: 0.75rem; color: white;
+      text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+      cursor: pointer;
+      transition: transform 0.2s;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+    }
+    .ai-color-item:hover { transform: scale(1.1) rotate(2deg); }
+
+    /* Loader */
+    .loader {
+      width: 20px; height: 20px;
+      border: 3px solid rgba(255,255,255,0.3);
+      border-radius: 50%;
+      border-top-color: white;
+      animation: spin 1s ease-in-out infinite;
+    }
+    .loader.hidden { display: none; }
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* Particles Background */
+    .ai-particles-container {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      pointer-events: none; z-index: 0;
+    }
+    .ai-particle {
+      position: absolute;
+      border-radius: 50%;
+      pointer-events: none;
+      opacity: 0;
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      .hero-content { flex-direction: column; text-align: center; }
+      .ai-tools-grid { grid-template-columns: 1fr; }
+      h1 { font-size: 2.2rem; }
+      .ai-tab-container { justify-content: flex-start; }
+      .ai-workspace { margin-top: 0; }
+    }
+  </style>
+</head>
+<body class="ai-page">
+
+  <header style="padding: 1rem 0; background: var(--color-dark-bg); color: white;">
+    <div class="container" style="display:flex; justify-content:space-between; align-items:center;">
+      <div style="font-weight:800; font-size:1.5rem;">Webéclat<span style="color:var(--color-primary);">.AI</span></div>
+      <nav>
+        <a href="index.html" style="color:white; text-decoration:none; margin-left:20px;">Retour au site</a>
+      </nav>
+    </div>
+  </header>
+
+  <section class="ai-master-hero">
+    <div class="container">
+      <div class="hero-content">
+        <div class="hero-text">
+          <span class="ai-power-badge">✨ Propulsé par Google Gemini</span>
+          <h1>Votre <span class="ai-glowing-text">Assistant Web Ultimate</span></h1>
+          <p style="font-size: 1.1rem; opacity: 0.9; margin-bottom: 2rem;">
+            Ne partez plus jamais d'une page blanche. Générez des structures, des textes, des designs et même des prompts pour vos images en quelques secondes.
+          </p>
+          <div class="ai-tools-grid">
+            <div class="ai-tool-card">
+              <div class="ai-tool-icon" style="color:#ffd700;">💡</div>
+              <h4>Idées & Concepts</h4>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-tool-icon" style="color:#ff6b6b;">🎨</div>
+              <h4>Design System</h4>
+            </div>
+            <div class="ai-tool-card">
+              <div class="ai-tool-icon" style="color:#4ecdc4;">🖼️</div>
+              <h4>Prompts Images</h4>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="ai-interface-section">
+    <div class="container">
+      
+      <div class="ai-workspace">
+        <div class="ai-workspace-header">
+          <h3 style="margin: 0; display:flex; align-items:center; gap:0.5rem;">
+            <i class="fas fa-robot"></i> Studio de Création
+          </h3>
+          <div style="font-size: 0.8rem; opacity: 0.8; background:rgba(255,255,255,0.1); padding:0.3rem 0.8rem; border-radius:20px;">
+            Gemini Flash 2.5 Active
+          </div>
+        </div>
+        
+        <div class="ai-tab-container">
+          <button class="ai-tab active" data-tab="ideas">💡 Idées</button>
+          <button class="ai-tab" data-tab="design">🎨 Design</button>
+          <button class="ai-tab" data-tab="copy">📝 Rédaction</button>
+          <button class="ai-tab" data-tab="structure">🏗️ Structure</button>
+          <button class="ai-tab" data-tab="names">🔤 Noms</button>
+          <button class="ai-tab" data-tab="images" style="color:#e67e22;">🖼️ Prompts Images</button>
+          <button class="ai-tab" data-tab="seo" style="color:#27ae60;">🚀 Stratégie SEO</button>
+        </div>
+        
+        <div class="ai-workspace-content">
+          
+          <div class="ai-tab-content active" id="ideas-tab">
+            <div class="ai-input-area">
+              <label>Quelle est votre activité ?</label>
+              <input type="text" id="business-type" class="ai-textarea" placeholder="Ex: Boulangerie Artisanale, Cabinet d'avocats, Blog Voyage...">
+            </div>
+            <div class="ai-options-grid">
+              <div class="ai-option selected" data-option="vitrine">Site Vitrine</div>
+              <div class="ai-option" data-option="ecommerce">E-commerce</div>
+              <div class="ai-option" data-option="portfolio">Portfolio</div>
+              <div class="ai-option" data-option="saas">App / SaaS</div>
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('ideas')">
+              <span class="btn-text">Générer des concepts</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="ideas-result"></div>
+          </div>
+
+          <div class="ai-tab-content" id="design-tab">
+            <div class="ai-input-area">
+              <label>Décrivez l'ambiance ou les valeurs</label>
+              <textarea id="design-theme" class="ai-textarea" rows="3" placeholder="Ex: Minimaliste et luxueux, Écologique et vert, Futuriste néon..."></textarea>
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('design')">
+              <span class="btn-text">Générer la palette</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="design-result"></div>
+          </div>
+
+          <div class="ai-tab-content" id="copy-tab">
+            <div class="ai-input-area">
+              <label>Type de page</label>
+              <select id="copy-type" class="ai-textarea">
+                <option value="accueil">Page d'Accueil (Hero Section)</option>
+                <option value="apropos">Page À Propos (Storytelling)</option>
+                <option value="services">Description des Services</option>
+                <option value="cta">Appels à l'action (CTA)</option>
+              </select>
+            </div>
+            <div class="ai-input-area">
+              <label>Détails spécifiques (Cible, ton, offre)</label>
+              <textarea id="copy-details" class="ai-textarea" rows="4" placeholder="Ex: Cible les jeunes entrepreneurs, ton décontracté mais expert. Offre de lancement -50%."></textarea>
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('copy')">
+              <span class="btn-text">Rédiger le contenu</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="copy-result"></div>
+          </div>
+
+          <div class="ai-tab-content" id="structure-tab">
+            <div class="ai-input-area">
+              <label>Objectif principal du site</label>
+              <select id="site-purpose" class="ai-textarea">
+                <option value="lead">Générer des prospects (Devis)</option>
+                <option value="sales">Vente directe (Produits)</option>
+                <option value="info">Information & Autorité</option>
+                <option value="community">Communauté & Adhésion</option>
+              </select>
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('structure')">
+              <span class="btn-text">Créer l'arborescence</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="structure-result"></div>
+          </div>
+
+          <div class="ai-tab-content" id="names-tab">
+            <div class="ai-input-area">
+              <label>Secteur d'activité</label>
+              <input type="text" id="business-domain" class="ai-textarea" placeholder="Ex: Mode éthique, Application de sport...">
+            </div>
+            <div class="ai-input-area">
+              <label>Style de nom</label>
+              <select id="business-style" class="ai-textarea">
+                <option value="court">Court & Punchy (ex: Nike, Uber)</option>
+                <option value="descriptif">Descriptif & Clair</option>
+                <option value="abstrait">Abstrait & Créatif</option>
+                <option value="francais">Traditionnel Français</option>
+              </select>
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('names')">
+              <span class="btn-text">Trouver des noms</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="names-result"></div>
+          </div>
+
+          <div class="ai-tab-content" id="images-tab">
+            <p style="margin-bottom:1rem; font-style:italic; color:#666;">Générez des descriptions optimisées pour Midjourney, DALL-E ou Adobe Firefly.</p>
+            <div class="ai-input-area">
+              <label>Que voulez-vous illustrer ?</label>
+              <input type="text" id="img-subject" class="ai-textarea" placeholder="Ex: Une équipe travaillant dans un bureau moderne, Un burger gourmand...">
+            </div>
+            <div class="ai-input-area">
+              <label>Style artistique</label>
+              <select id="img-style" class="ai-textarea">
+                <option value="photo">Photoréaliste (4k, studio lighting)</option>
+                <option value="illustration">Illustration Vectorielle (Flat design)</option>
+                <option value="3d">Rendu 3D (Pixar style, Blender)</option>
+                <option value="artistic">Artistique (Peinture à l'huile, Aquarelle)</option>
+              </select>
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('images')">
+              <span class="btn-text">Générer le Prompt IA</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="images-result"></div>
+          </div>
+
+          <div class="ai-tab-content" id="seo-tab">
+             <div class="ai-input-area">
+              <label>Mot-clé principal ou niche</label>
+              <input type="text" id="seo-keyword" class="ai-textarea" placeholder="Ex: Plombier urgence Paris, Yoga prénatal...">
+            </div>
+            <button class="ai-generate-btn" onclick="generateContent('seo')">
+              <span class="btn-text">Analyser & Planifier</span>
+              <span class="loader hidden"></span>
+            </button>
+            <div class="ai-result-area hidden" id="seo-result"></div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <div class="ai-particles-container" id="ai-particles"></div>
+
+  <script>
+    /* --- CONFIGURATION --- */
+    // On reprend exactement la même clé et le même modèle que dans index.html
+    const API_KEY = "AIzaSyCjV3StRtKvKerAqWUOodoJKmOqYiZZ3Is"; 
+    
+    // Correction ici : Utilisation du modèle "2.5-flash-preview" qui fonctionne dans votre index.html
+    const API_URL = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash-preview-09-2025:generateContent?key=${API_KEY}`;
+
+    /* --- UI INTERACTION --- */
+    document.addEventListener("DOMContentLoaded", function() {
+      // Gestion des onglets
+      const tabs = document.querySelectorAll('.ai-tab');
+      const contents = document.querySelectorAll('.ai-tab-content');
+
+      tabs.forEach(tab => {
+        tab.addEventListener('click', () => {
+          // Reset
+          tabs.forEach(t => t.classList.remove('active'));
+          contents.forEach(c => c.classList.remove('active'));
+          // Activate
+          tab.classList.add('active');
+          const target = tab.getAttribute('data-tab');
+          document.getElementById(`${target}-tab`).classList.add('active');
+        });
+      });
+
+      // Gestion des sélections (Options Grid)
+      document.querySelectorAll('.ai-option').forEach(opt => {
+        opt.addEventListener('click', function() {
+          const parent = this.parentElement;
+          parent.querySelectorAll('.ai-option').forEach(o => o.classList.remove('selected'));
+          this.classList.add('selected');
+        });
+      });
+
+      // Particules Animation
+      createParticles();
+    });
+
+    /* --- LOGIQUE IA --- */
+    async function generateContent(type) {
+      // Sélection dynamique du bouton et de la zone de résultat en fonction de l'onglet actif
+      const btn = document.querySelector(`#${type}-tab .ai-generate-btn`);
+      const resultArea = document.getElementById(`${type}-result`);
+      const loader = btn.querySelector('.loader');
+      const btnText = btn.querySelector('.btn-text');
+
+      // UI Loading State
+      btn.disabled = true;
+      loader.classList.remove('hidden');
+      btnText.textContent = "IA en réflexion...";
+      resultArea.classList.add('hidden');
+      resultArea.innerHTML = "";
+
+      try {
+        const prompt = buildPrompt(type);
+        if (!prompt) throw new Error("Veuillez remplir les champs obligatoires.");
+
+        const response = await fetch(API_URL, {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify({
+            contents: [{ parts: [{ text: prompt }] }]
+          })
+        });
+
+        if (!response.ok) throw new Error("Erreur de connexion à Gemini");
+
+        const data = await response.json();
+        
+        // Vérification de sécurité si la réponse est vide
+        if (!data.candidates || !data.candidates[0].content) {
+            throw new Error("L'IA n'a pas renvoyé de réponse valide.");
+        }
+
+        const rawText = data.candidates[0].content.parts[0].text;
+        
+        // Rendu Markdown
+        resultArea.innerHTML = marked.parse(rawText);
+        resultArea.classList.remove('hidden');
+
+        // Traitement spécial pour les couleurs (création visuelle)
+        if (type === 'design') extractColors(rawText, resultArea);
+
+      } catch (error) {
+        console.error(error);
+        resultArea.innerHTML = `<div style="color:#e74c3c; padding:1rem; background:#fadbd8; border-radius:8px;">⚠️ ${error.message}</div>`;
+        resultArea.classList.remove('hidden');
+      } finally {
+        btn.disabled = false;
+        loader.classList.add('hidden');
+        btnText.textContent = getButtonLabel(type);
+      }
+    }
+
+    /* --- CONSTRUCTION DES PROMPTS --- */
+    function buildPrompt(type) {
+      let basePrompt = "Tu es un expert web aguerri (UX/UI, Copywriter, SEO). ";
+      
+      if (type === 'ideas') {
+        const activity = document.getElementById('business-type').value;
+        const siteType = document.querySelector('#ideas-tab .ai-option.selected')?.dataset.option || 'site';
+        if(!activity) return null;
+        return `${basePrompt} Propose 5 idées de fonctionnalités innovantes et concrètes pour un ${siteType} dans le secteur : "${activity}". Utilise du Markdown avec des emojis. Sois créatif.`;
+      }
+
+      if (type === 'design') {
+        const mood = document.getElementById('design-theme').value;
+        if(!mood) return null;
+        return `${basePrompt} Crée une palette de couleurs web harmonieuse (5 couleurs max) pour cette ambiance : "${mood}". Pour chaque couleur, donne le code HEX, un nom, et son usage (fond, accent, texte). Formatte la réponse en liste Markdown.`;
+      }
+
+      if (type === 'copy') {
+        const cType = document.getElementById('copy-type').value;
+        const details = document.getElementById('copy-details').value;
+        if(!details) return null;
+        return `${basePrompt} Rédige un texte pour la section "${cType}" d'un site web. Contexte : "${details}". Le texte doit être persuasif, orienté conversion, et optimisé SEO. Utilise des balises H2, H3 et des paragraphes courts.`;
+      }
+
+      if (type === 'structure') {
+        const purpose = document.getElementById('site-purpose').value;
+        return `${basePrompt} Propose l'arborescence idéale (Sitemap) pour un site dont l'objectif est : "${purpose}". Liste les pages clés et pour chaque page, les 3 sections indispensables.`;
+      }
+
+      if (type === 'names') {
+        const domain = document.getElementById('business-domain').value;
+        const style = document.getElementById('business-style').value;
+        if(!domain) return null;
+        return `${basePrompt} Trouve 10 noms de marque disponibles potentiels pour le secteur "${domain}" avec un style "${style}". Ajoute un slogan court pour chaque nom.`;
+      }
+
+      if (type === 'images') {
+        const subject = document.getElementById('img-subject').value;
+        const style = document.getElementById('img-style').value;
+        if(!subject) return null;
+        return `Tu es un expert en Prompt Engineering pour Midjourney v6. Rédige 3 prompts détaillés en ANGLAIS pour générer cette image : "${subject}". Style artistique : "${style}". Structure du prompt : [Sujet principal] + [Détails environnement] + [Lumière/Atmosphère] + [Style/Technique]. Donne aussi la traduction française.`;
+      }
+
+      if (type === 'seo') {
+        const keyword = document.getElementById('seo-keyword').value;
+        if(!keyword) return null;
+        return `${basePrompt} Agis comme un consultant SEO senior. Pour le mot-clé principal "${keyword}" : 1. Donne 5 mots-clés de longue traîne. 2. Propose 3 idées d'articles de blog. 3. Rédige la Meta Title et la Meta Description.`;
+      }
+    }
+
+    function getButtonLabel(type) {
+      const labels = {
+        ideas: "Générer des concepts", design: "Générer la palette", copy: "Rédiger le contenu",
+        structure: "Créer l'arborescence", names: "Trouver des noms", images: "Générer le Prompt IA",
+        seo: "Analyser & Planifier"
+      };
+      return labels[type] || "Générer";
+    }
+
+    /* --- FONCTIONS UTILITAIRES --- */
+    function extractColors(text, container) {
+      const hexCodes = text.match(/#[0-9A-Fa-f]{6}/g);
+      if (hexCodes && hexCodes.length > 0) {
+        const paletteDiv = document.createElement('div');
+        paletteDiv.className = 'ai-color-palette';
+        const uniqueHex = [...new Set(hexCodes)].slice(0, 6);
+        
+        uniqueHex.forEach(hex => {
+          const div = document.createElement('div');
+          div.className = 'ai-color-item';
+          div.style.backgroundColor = hex;
+          div.innerHTML = `<span>${hex}</span>`;
+          div.title = "Cliquer pour copier";
+          div.onclick = () => {
+            navigator.clipboard.writeText(hex);
+            div.innerHTML = "<span>Copié!</span>";
+            setTimeout(() => div.innerHTML = `<span>${hex}</span>`, 1000);
+          };
+          paletteDiv.appendChild(div);
+        });
+        container.insertBefore(paletteDiv, container.firstChild);
+      }
+    }
+
+    /* --- PARTICLES BACKGROUND --- */
+    function createParticles() {
+      const container = document.getElementById('ai-particles');
+      const colors = ['#009dff', '#8e44ad', '#ffd700'];
+      
+      setInterval(() => {
+        const p = document.createElement('div');
+        p.className = 'ai-particle';
+        const size = Math.random() * 8 + 2;
+        p.style.width = `${size}px`;
+        p.style.height = `${size}px`;
+        p.style.background = colors[Math.floor(Math.random() * colors.length)];
+        p.style.left = Math.random() * 100 + 'vw';
+        p.style.top = '100vh';
+        p.style.opacity = Math.random() * 0.5 + 0.1;
+        
+        const duration = Math.random() * 10 + 10;
+        p.style.transition = `top ${duration}s linear, opacity ${duration}s ease-out`;
+        
+        container.appendChild(p);
+        setTimeout(() => {
+          p.style.top = '-10vh';
+          p.style.opacity = 0;
+        }, 100);
+        setTimeout(() => p.remove(), duration * 1000);
+      }, 500);
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Services & Accompagnement - Webéclat</title>
+  
+  <link rel="stylesheet" href="style.css" />
+  
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <style>
+    /* =========================================
+       VARIABLES & THEME (Basé sur tarif.html)
+       ========================================= */
+    :root {
+      --bg-deep: #020617;
+      --bg-card: #0f172a;
+      --primary: #38bdf8;
+      --primary-glow: rgba(56, 189, 248, 0.4);
+      --secondary: #818cf8;
+      --success: #22c55e;
+      --accent: #ffd700;
+      --text-main: #f8fafc;
+      --text-muted: #94a3b8;
+      --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+      --radius-xl: 24px;
+    }
+
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg-deep);
+      color: var(--text-main);
+      margin: 0;
+      overflow-x: hidden;
+    }
+
+    /* Navbar Override */
+    .navbar { background: rgba(2, 6, 23, 0.9) !important; backdrop-filter: blur(12px); border-bottom: var(--glass-border); }
+
+    /* =========================================
+       HERO SECTION : "THE SHIELD"
+       ========================================= */
+    .service-hero {
+      padding: 10rem 0 6rem;
+      position: relative;
+      text-align: center;
+      overflow: hidden;
+    }
+
+    .hero-blob {
+      position: absolute; width: 600px; height: 600px;
+      background: radial-gradient(circle, rgba(34, 197, 94, 0.15) 0%, transparent 70%); /* Vert pour la sécurité */
+      top: -20%; left: 50%; transform: translateX(-50%);
+      filter: blur(80px); z-index: 0;
+      animation: pulseGreen 6s infinite alternate;
+    }
+    @keyframes pulseGreen { 0% { opacity: 0.4; transform: translateX(-50%) scale(1); } 100% { opacity: 0.7; transform: translateX(-50%) scale(1.1); } }
+
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 8px 16px; background: rgba(34, 197, 94, 0.1);
+      border: 1px solid rgba(34, 197, 94, 0.2); border-radius: 100px;
+      color: var(--success); font-weight: 600; font-size: 0.85rem; margin-bottom: 2rem;
+    }
+
+    .hero-title { font-size: 3.5rem; font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem; }
+    .hero-desc { font-size: 1.2rem; color: var(--text-muted); max-width: 700px; margin: 0 auto; }
+
+    /* =========================================
+       SECTION 1 : MAINTENANCE (DASHBOARD)
+       ========================================= */
+    .maintenance-section { padding: 6rem 0; position: relative; }
+    
+    .grid-split {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center;
+    }
+
+    .feature-text h2 { font-size: 2.5rem; margin-bottom: 1rem; }
+    .feature-text p { color: var(--text-muted); font-size: 1.1rem; margin-bottom: 2rem; }
+
+    .check-list { list-style: none; padding: 0; }
+    .check-list li {
+      display: flex; gap: 15px; margin-bottom: 1.5rem; align-items: flex-start;
+    }
+    .check-icon {
+      width: 24px; height: 24px; background: rgba(34, 197, 94, 0.2); color: var(--success);
+      border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 0.8rem;
+      margin-top: 3px; flex-shrink: 0;
+    }
+    .check-content strong { color: white; display: block; margin-bottom: 0.3rem; }
+    .check-content span { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* DASHBOARD MOCKUP */
+    .dashboard-mockup {
+      background: #0f172a; border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 2rem; position: relative;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+      transform: perspective(1000px) rotateY(-5deg);
+      transition: transform 0.5s ease;
+    }
+    .grid-split:hover .dashboard-mockup { transform: perspective(1000px) rotateY(0deg); }
+
+    .dash-header { display: flex; justify-content: space-between; margin-bottom: 2rem; border-bottom: 1px solid rgba(255,255,255,0.05); padding-bottom: 1rem; }
+    .status-pill { background: rgba(34, 197, 94, 0.2); color: var(--success); padding: 5px 12px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; display: flex; align-items: center; gap: 6px; }
+    .pulse-dot { width: 8px; height: 8px; background: var(--success); border-radius: 50%; animation: pulse 1.5s infinite; }
+    
+    .dash-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; }
+    .dash-card { background: rgba(255,255,255,0.03); padding: 1rem; border-radius: 12px; text-align: center; }
+    .dash-val { font-size: 1.8rem; font-weight: 700; color: white; display: block; margin-top: 5px; }
+    .dash-label { font-size: 0.8rem; color: var(--text-muted); }
+
+    .security-scan {
+      margin-top: 1.5rem; background: rgba(0,0,0,0.3); padding: 1rem; border-radius: 12px;
+    }
+    .scan-bar { height: 6px; background: #333; border-radius: 10px; overflow: hidden; margin-top: 10px; }
+    .scan-progress { width: 100%; height: 100%; background: var(--success); animation: scanLoad 3s ease-in-out infinite; }
+    @keyframes scanLoad { 0% { width: 0%; } 50% { width: 100%; } 100% { width: 100%; opacity: 0; } }
+
+    /* =========================================
+       SECTION 2 : MODULAIRE (LEGO BLOCKS)
+       ========================================= */
+    .modular-section { padding: 6rem 0; background: linear-gradient(180deg, var(--bg-deep) 0%, #0b1121 100%); }
+    
+    .modules-grid {
+      display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 1.5rem; margin-top: 3rem;
+    }
+
+    .module-item {
+      background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05);
+      border-radius: 16px; padding: 1.5rem; cursor: pointer; transition: 0.3s;
+      display: flex; flex-direction: column; align-items: center; text-align: center;
+    }
+    .module-item:hover { background: rgba(255,255,255,0.05); border-color: var(--primary); transform: translateY(-5px); }
+    .module-item.active { background: rgba(56, 189, 248, 0.1); border-color: var(--primary); box-shadow: 0 0 20px rgba(56, 189, 248, 0.2); }
+    
+    .module-icon { font-size: 2rem; margin-bottom: 1rem; color: var(--text-muted); transition: 0.3s; }
+    .module-item.active .module-icon { color: var(--primary); transform: scale(1.1); }
+
+    .preview-window {
+      margin-top: 3rem; background: var(--bg-card); border: 1px solid rgba(255,255,255,0.1);
+      border-radius: 20px; padding: 2rem; min-height: 200px;
+      display: flex; align-items: center; justify-content: center; flex-direction: column;
+    }
+    .preview-text { font-size: 1.2rem; color: var(--text-muted); text-align: center; max-width: 600px; }
+
+    /* =========================================
+       SECTION 3 : HUMAIN (COMPARATIF)
+       ========================================= */
+    .human-section { padding: 6rem 0; background: #0f172a; border-top: var(--glass-border); }
+    
+    .human-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr); gap: 2rem; margin-top: 3rem;
+    }
+
+    .h-card {
+      background: var(--bg-deep); border-radius: 20px; padding: 2rem; border: 1px solid rgba(255,255,255,0.05);
+      position: relative; overflow: hidden;
+    }
+    .h-card.webeclat {
+      background: linear-gradient(145deg, #1e293b, #0f172a); border: 1px solid var(--secondary);
+      transform: scale(1.05); box-shadow: 0 20px 40px rgba(0,0,0,0.4); z-index: 2;
+    }
+    
+    .h-card h3 { font-size: 1.3rem; margin-bottom: 1.5rem; text-align: center; }
+    .h-feat { display: flex; justify-content: space-between; border-bottom: 1px solid rgba(255,255,255,0.05); padding: 10px 0; font-size: 0.9rem; }
+    .h-feat:last-child { border-bottom: none; }
+    .h-val { font-weight: 700; }
+    .h-val.bad { color: var(--danger); }
+    .h-val.good { color: var(--success); }
+
+    /* =========================================
+       CALCULATEUR ROI
+       ========================================= */
+    .roi-section { padding: 6rem 0; }
+    .roi-box {
+      background: linear-gradient(135deg, rgba(56, 189, 248, 0.1) 0%, rgba(129, 140, 248, 0.1) 100%);
+      border: 1px solid rgba(255,255,255,0.1); border-radius: 30px; padding: 3rem;
+      text-align: center; max-width: 800px; margin: 0 auto;
+    }
+    
+    .roi-value {
+      font-size: 4rem; font-weight: 800; color: white; margin: 1rem 0;
+      text-shadow: 0 0 30px rgba(56, 189, 248, 0.5);
+    }
+
+    .range-wrap { margin: 2rem 0; }
+    input[type=range] { width: 100%; cursor: pointer; accent-color: var(--primary); }
+
+    /* Mobile */
+    @media (max-width: 768px) {
+      .grid-split, .human-grid { grid-template-columns: 1fr; }
+      .hero-title { font-size: 2.5rem; }
+      .h-card.webeclat { transform: scale(1); }
+      .dash-stats { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="navbar">
+    <div class="container">
+      <div class="logo">
+        <a href="index.html" style="color:white; font-weight:800; font-size:1.5rem; text-decoration:none;">
+          Web<span style="color:var(--primary);">éclat</span>
+        </a>
+      </div>
+      <nav>
+        <ul class="nav-links">
+          <li><a href="index.html" class="micro-line">Accueil</a></li>
+          <li><a href="personnalisation.html" class="micro-line">Design</a></li>
+          <li><a href="services.html" class="micro-line active" style="color:var(--primary);">Services</a></li>
+          <li><a href="tarif.html" class="micro-line">Tarifs</a></li>
+          <li><a href="rdv.html" class="btn-nav">Devis Gratuit</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <section class="service-hero">
+    <div class="hero-blob"></div>
+    <div class="container" style="position:relative; z-index:2;">
+      <div class="hero-badge"><i class="fas fa-shield-alt"></i> Protection & Sérénité</div>
+      <h1 class="hero-title">Votre Partenaire Technique <br><span class="text-gradient" style="background: linear-gradient(to right, #22c55e, #38bdf8); -webkit-background-clip: text; color: transparent;">Invisible & Indispensable.</span></h1>
+      <p class="hero-desc">Pendant que vous gérez votre business, nous veillons sur votre présence en ligne. Hébergement, sécurité, mises à jour et évolutions : tout est sous contrôle.</p>
+    </div>
+  </section>
+
+  <section class="maintenance-section">
+    <div class="container">
+      <div class="grid-split">
+        
+        <div class="feature-text">
+          <h2>Dormez Tranquille,<br>On S'occupe de Tout.</h2>
+          <p>Un site web n'est pas une affiche statique. C'est un logiciel vivant qui nécessite soin et sécurité. Notre offre de maintenance vous garantit une disponibilité de 99.9%.</p>
+          
+          <ul class="check-list">
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <div class="check-content">
+                <strong>Mises à jour de sécurité</strong>
+                <span>Protection contre les failles et les attaques (Pare-feu inclus).</span>
+              </div>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <div class="check-content">
+                <strong>Sauvegardes Quotidiennes</strong>
+                <span>Vos données sont dupliquées sur des serveurs externes sécurisés.</span>
+              </div>
+            </li>
+            <li>
+              <div class="check-icon"><i class="fas fa-check"></i></div>
+              <div class="check-content">
+                <strong>Vitesse Optimisée</strong>
+                <span>Monitoring constant des performances et du temps de chargement.</span>
+              </div>
+            </li>
+          </ul>
+        </div>
+
+        <div class="dashboard-mockup">
+          <div class="dash-header">
+            <span style="font-weight:700; color:white;">Webéclat Monitor</span>
+            <div class="status-pill"><div class="pulse-dot"></div> SYSTÈME OPÉRATIONNEL</div>
+          </div>
+          
+          <div class="dash-stats">
+            <div class="dash-card">
+              <i class="fas fa-tachometer-alt" style="color:var(--primary);"></i>
+              <span class="dash-val">0.4s</span>
+              <span class="dash-label">Temps de réponse</span>
+            </div>
+            <div class="dash-card">
+              <i class="fas fa-clock" style="color:var(--success);"></i>
+              <span class="dash-val">100%</span>
+              <span class="dash-label">Uptime (30j)</span>
+            </div>
+          </div>
+
+          <div class="security-scan">
+            <div style="display:flex; justify-content:space-between; font-size:0.8rem; color:#aaa;">
+              <span>Scan de sécurité en cours...</span>
+              <span>No threats found</span>
+            </div>
+            <div class="scan-bar"><div class="scan-progress"></div></div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <section class="modular-section">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+      <h2 style="font-size:2.5rem; margin-bottom:1rem; color: #ffffff;">Architecture Évolutive 🧱</h2>
+      <p style="color:var(--text-muted);">Votre site grandit avec vous. Ajoutez des blocs fonctionnels quand vous en avez besoin, sans tout refaire.</p>
+    </div>
+
+      <div class="modules-grid">
+        <div class="module-item active" onclick="activateModule(this, 'booking')">
+          <div class="module-icon"><i class="fas fa-calendar-check"></i></div>
+          <strong>Prise de RDV</strong>
+        </div>
+        <div class="module-item" onclick="activateModule(this, 'shop')">
+          <div class="module-icon"><i class="fas fa-shopping-cart"></i></div>
+          <strong>E-Shop</strong>
+        </div>
+        <div class="module-item" onclick="activateModule(this, 'blog')">
+          <div class="module-icon"><i class="fas fa-newspaper"></i></div>
+          <strong>Blog / News</strong>
+        </div>
+        <div class="module-item" onclick="activateModule(this, 'gallery')">
+          <div class="module-icon"><i class="fas fa-images"></i></div>
+          <strong>Galerie Pro</strong>
+        </div>
+        <div class="module-item" onclick="activateModule(this, 'review')">
+          <div class="module-icon"><i class="fas fa-star"></i></div>
+          <strong>Avis Clients</strong>
+        </div>
+      </div>
+
+      <div class="preview-window" id="module-preview">
+        <i class="fas fa-calendar-check" style="font-size:3rem; color:var(--primary); margin-bottom:1rem;"></i>
+        <h3 style="margin-bottom:0.5rem;">Module Réservation</h3>
+        <p class="preview-text">Synchronisation Google Calendar, rappels SMS automatiques et paiement d'acompte en ligne. Idéal pour les professions libérales.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="human-section">
+    <div class="container">
+      <div class="section-header" style="text-align:center;">
+      <h2 style="font-size:2.5rem; color: #ffffff;">L'Humain avant le Code ❤️</h2>
+      <p style="color:var(--text-muted);">Fini les tickets de support sans réponse. Voici pourquoi nos clients restent.</p>
+    </div>
+
+      <div class="human-grid">
+        <div class="h-card" style="opacity:0.7;">
+          <h3>Freelance Isolé</h3>
+          <div class="h-feat"><span>Disponibilité</span> <span class="h-val bad">Aléatoire</span></div>
+          <div class="h-feat"><span>Prix</span> <span class="h-val good">Bas</span></div>
+          <div class="h-feat"><span>Maintenance</span> <span class="h-val bad">Rare</span></div>
+          <div class="h-feat"><span>Expertise</span> <span class="h-val">Généraliste</span></div>
+        </div>
+
+        <div class="h-card webeclat">
+          <div style="position:absolute; top:0; left:0; width:100%; height:5px; background:var(--secondary);"></div>
+          <h3>Agence Webéclat</h3>
+          <div class="h-feat"><span>Disponibilité</span> <span class="h-val good">7j/7 (WhatsApp)</span></div>
+          <div class="h-feat"><span>Prix</span> <span class="h-val good">Adapté TPE</span></div>
+          <div class="h-feat"><span>Maintenance</span> <span class="h-val good">Proactive</span></div>
+          <div class="h-feat"><span>Expertise</span> <span class="h-val good">Dédiée Web & IA</span></div>
+          <div style="text-align:center; margin-top:1.5rem;">
+            <span style="background:rgba(129, 140, 248, 0.2); color:var(--secondary); padding:5px 10px; border-radius:20px; font-size:0.8rem;">Le meilleur compromis</span>
+          </div>
+        </div>
+
+        <div class="h-card" style="opacity:0.7;">
+          <h3>Grosse Agence</h3>
+          <div class="h-feat"><span>Disponibilité</span> <span class="h-val">Tickets (48h)</span></div>
+          <div class="h-feat"><span>Prix</span> <span class="h-val bad">Élevé</span></div>
+          <div class="h-feat"><span>Maintenance</span> <span class="h-val good">Automatisée</span></div>
+          <div class="h-feat"><span>Relation</span> <span class="h-val bad">Impersonnelle</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="roi-section">
+    <div class="container">
+      <div class="roi-box">
+        <h2>Combien vaut votre tranquillité ?</h2>
+        <p>Estimez le coût de gestion de votre site si vous deviez le faire vous-même (Mises à jour, sécurité, bugs).</p>
+        
+        <div class="range-wrap">
+          <label style="display:block; margin-bottom:1rem; color:var(--text-muted);">Votre tarif horaire estimé : <span id="hourly-rate-display" style="color:white; font-weight:bold;">50€</span>/h</label>
+          <input type="range" min="20" max="200" value="50" id="hourly-rate">
+        </div>
+
+        <p>Temps moyen de maintenance technique /mois : <strong>4 heures</strong></p>
+        
+        <div>Économie réalisée avec Webéclat :</div>
+        <div class="roi-value" id="roi-total">150€ /mois</div>
+        <p style="font-size:0.9rem; opacity:0.7;">(Basé sur notre forfait maintenance à 50€/mois)</p>
+
+        <a href="rdv.html" class="btn" style="background:white; color:var(--bg-deep); margin-top:2rem;">Déléguer ma technique</a>
+      </div>
+    </div>
+  </section>
+
+  <footer style="background:#000; padding:2rem 0; text-align:center; border-top:1px solid #222; margin-top:4rem;">
+    <div class="container">
+      <p style="color:#666; font-size:0.9rem;">&copy; 2025 Webéclat. Votre partenaire de croissance.</p>
+    </div>
+  </footer>
+
+  <script>
+    // MODULE SWITCHER LOGIC
+    const moduleData = {
+      booking: { icon: "fas fa-calendar-check", title: "Module Réservation", text: "Synchronisation Google Calendar, rappels SMS automatiques et paiement d'acompte en ligne. Idéal pour les professions libérales." },
+      shop: { icon: "fas fa-shopping-cart", title: "Module E-Shop", text: "Transformez votre vitrine en boutique. Gestion de stock, paiement Stripe sécurisé et tableau de bord des ventes." },
+      blog: { icon: "fas fa-newspaper", title: "Blog & Actualités", text: "Boostez votre SEO avec des articles. Interface de rédaction simplifiée (CMS) pour publier sans coder." },
+      gallery: { icon: "fas fa-images", title: "Galerie Pro", text: "Portfolio filtrable, chargement rapide (Lazy Load) et protection contre le clic droit pour vos images." },
+      review: { icon: "fas fa-star", title: "Avis Clients", text: "Importation automatique de vos avis Google et Trustpilot pour rassurer vos visiteurs instantanément." }
+    };
+
+    function activateModule(element, key) {
+      // Update Active Class
+      document.querySelectorAll('.module-item').forEach(el => el.classList.remove('active'));
+      element.classList.add('active');
+
+      // Update Preview
+      const data = moduleData[key];
+      const preview = document.getElementById('module-preview');
+      preview.style.opacity = 0;
+      
+      setTimeout(() => {
+        preview.innerHTML = `
+          <i class="${data.icon}" style="font-size:3rem; color:var(--primary); margin-bottom:1rem;"></i>
+          <h3 style="margin-bottom:0.5rem;">${data.title}</h3>
+          <p class="preview-text">${data.text}</p>
+        `;
+        preview.style.opacity = 1;
+      }, 200);
+    }
+
+    // ROI CALCULATOR LOGIC
+    const slider = document.getElementById('hourly-rate');
+    const display = document.getElementById('hourly-rate-display');
+    const total = document.getElementById('roi-total');
+    const maintenanceCost = 50; // Prix Webéclat
+    const hoursNeeded = 4; // Heures moyennes
+
+    slider.addEventListener('input', function() {
+      const rate = this.value;
+      display.textContent = rate + '€';
+      
+      const selfCost = rate * hoursNeeded;
+      const savings = selfCost - maintenanceCost;
+      
+      // Animation du chiffre
+      total.textContent = savings + '€ /mois';
+      
+      if(savings > 0) {
+        total.style.color = "var(--success)";
+      } else {
+        total.style.color = "white"; // Cas rare
+      }
+    });
+  </script>
+
+</body>
+</html>
