@@ -3402,32 +3402,56 @@ body {
    ========================================================================== */
 
 @media (max-width: 992px) {
-  /* 1. NAVIGATION MOBILE SIMPLIFIÉE
-     Rend le menu défilable horizontalement (façon Instagram/App)
-     au lieu de l'écraser. */
+  /* 1. NAVIGATION MOBILE SIMPLIFIÉE (Slidable) */
   .navbar .container {
     flex-direction: column;
     align-items: flex-start;
-    padding: 1rem;
+    padding: 1rem 0; /* On retire le padding latéral du conteneur pour que le scroll touche les bords */
   }
 
   .navbar .logo {
-    margin-bottom: 1rem;
+    margin-bottom: 0.5rem;
     width: 100%;
-    text-align: center;
+    text-align: center; /* Logo centré au-dessus */
+    padding: 0 1rem; /* On remet du padding juste pour le logo */
   }
 
   .navbar nav {
     width: 100%;
-    overflow-x: auto; /* Permet le scroll horizontal */
-    -webkit-overflow-scrolling: touch; /* Scroll fluide sur iOS */
-    padding-bottom: 10px; /* Espace pour la barre de scroll */
+    overflow-x: auto; /* Active le défilement horizontal */
+    white-space: nowrap; /* Empêche le retour à la ligne des liens */
+    -webkit-overflow-scrolling: touch; /* Fluidité sur iPhone */
+    padding: 0.5rem 1.5rem 1rem 1.5rem; /* Espacement confortable pour le doigt */
+    
+    /* Cache la barre de défilement (Scrollbar) pour un look "App" propre */
+    scrollbar-width: none; /* Firefox */
+    -ms-overflow-style: none; /* IE/Edge */
+  }
+
+  /* Cache la scrollbar sur Chrome/Safari/Opera */
+  .navbar nav::-webkit-scrollbar {
+    display: none;
   }
 
   .navbar .nav-links {
-    width: max-content; /* Force les liens à garder leur largeur */
-    gap: 1.5rem;
-    padding-right: 20px;
+    display: flex;
+    align-items: center;
+    width: max-content; /* Force la largeur à s'adapter au contenu total (même si ça dépasse l'écran) */
+    gap: 1.5rem; /* Espace entre les liens */
+    margin: 0;
+  }
+
+  /* Ajustement des liens pour le tactile */
+  .navbar .micro-line {
+    font-size: 1rem; /* Un peu plus gros pour être lisible */
+    padding: 10px 0; /* Zone de clic agrandie */
+  }
+  
+  /* Ajustement du bouton contact dans le menu mobile */
+  .navbar .btn-nav {
+    margin-left: 5px;
+    padding: 0.5rem 1.2rem;
+    font-size: 0.9rem;
   }
 
   /* 2. TYPOGRAPHIE ET ESPACEMENTS */
